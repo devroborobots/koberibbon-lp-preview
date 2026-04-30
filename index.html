@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>FLOWER MATERIAL WHOLESALE</title>
+<meta name="viewport" content="width=1240">
+<style>
+  /* ---------- Reset & base ---------- */
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family: "Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP","Helvetica Neue",Arial,sans-serif;
+    color:#25272d;
+    background:#ffffff;
+    -webkit-font-smoothing:antialiased;
+    font-feature-settings:"palt";
+    line-height:1.6;
+    font-size:14px;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font:inherit; cursor:pointer; border:none; background:none; color:inherit; padding:0; }
+  ul{ list-style:none; padding:0; margin:0; }
+
+  /* Page is sized like the original LP (862 wide). We center it and use a comfortable container. */
+  .page{
+    max-width: 1240px;
+    margin: 0 auto;
+    background:#fff;
+    position:relative;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{
+    display:flex; align-items:center;
+    padding: 22px 36px;
+    gap: 32px;
+  }
+  .logo-block{
+    display:flex; align-items:center; gap:18px;
+  }
+  .logo-mark{
+    width:120px; height:54px;
+    background:#d9d9d9;
+    display:flex; align-items:center; justify-content:center;
+    color:#25272d; font-weight:700; letter-spacing:.05em;
+    font-size:18px;
+  }
+  .logo-tag{
+    font-size:12px; line-height:1.4; color:#25272d;
+    letter-spacing:.04em;
+  }
+  .nav{
+    flex:1;
+    display:flex; gap: 40px; justify-content:center;
+    font-size:13px; letter-spacing:.12em;
+    font-weight:600;
+  }
+  .nav a{ color:#25272d; }
+  .nav a:hover{ color:#7a8000; }
+  .header-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#C8F000; color:#25272d;
+    padding: 12px 22px; border-radius:999px;
+    font-weight:700; font-size:13px;
+    box-shadow: 0 2px 0 rgba(0,0,0,.04);
+  }
+  .header-cta .badge{
+    width:22px; height:22px; border-radius:50%;
+    background:#02B833; color:#fff;
+    font-size:9px; font-weight:700;
+    display:inline-flex; align-items:center; justify-content:center;
+    letter-spacing:0;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding: 14px 36px 30px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items:start;
+  }
+  .hero-eyebrow{
+    font-size: 12.5px;
+    line-height:1.9;
+    color:#25272d;
+    margin: 8px 0 30px;
+    letter-spacing:.04em;
+  }
+  .hero-title{
+    font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+    font-weight:600;
+    font-size: 64px;
+    line-height: 1.25;
+    letter-spacing:.02em;
+    margin: 0 0 30px;
+    color:#25272d;
+  }
+  .hero-title .acc{ color:#C8F000; }
+  .hero-sub{
+    font-size: 12.5px;
+    color:#25272d;
+    line-height:1.9;
+    margin: 0 0 32px;
+  }
+
+  /* Hero photo cluster on the right */
+  .hero-photo{
+    position:relative;
+    height: 470px;
+  }
+  .hero-photo .photo-blob{
+    position:absolute;
+    right: -20px; top: 0;
+    width: 540px; height: 470px;
+  }
+  .hero-photo .photo-blob img{
+    width:100%; height:100%; object-fit:cover;
+    -webkit-mask: var(--blob-mask); mask: var(--blob-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  }
+  .hero-photo .lime-blob{
+    position:absolute;
+    left: -20px; top: 50px;
+    width: 200px; height: 160px;
+    z-index: 2;
+  }
+  .hero-photo .dots{
+    position:absolute;
+    left: 80px; top: -8px;
+    width: 90px; height: 90px;
+    opacity:.9;
+    z-index: 3;
+  }
+  .hero-photo .wave{
+    position:absolute;
+    right: -10px; bottom: -10px;
+    width: 270px; height: 90px;
+  }
+  .hero-photo .script-text{
+    position:absolute;
+    right: -40px; top: 80px;
+    font-family:"Brush Script MT","Snell Roundhand","Apple Chancery", cursive;
+    color:#bdbdbd;
+    font-size: 22px;
+    transform: rotate(8deg);
+    line-height:1.2;
+    text-align:left;
+  }
+  .hero-photo .script-text.lower{
+    top:auto; bottom: 110px; right:-30px;
+    transform: rotate(8deg);
+  }
+
+  /* Feature icons row */
+  .feature-row{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 12px;
+    max-width: 540px;
+  }
+  .feature{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    text-align:center;
+  }
+  .feature .ico{
+    width:42px; height:42px;
+    color:#25272d;
+  }
+  .feature .ico svg{ width:100%; height:100%; }
+  .feature .lbl{
+    font-size: 10.5px;
+    line-height:1.5;
+    color:#25272d;
+  }
+
+  /* ---------- Event ---------- */
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding: 0 36px;
+    margin: 30px 0 18px;
+  }
+  .section-head .group{
+    display:flex; align-items:baseline; gap:14px;
+  }
+  .section-head h2{
+    font-size: 26px; letter-spacing:.06em;
+    margin:0; font-weight:700;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .section-head .ja{
+    font-size: 12px; color:#777;
+  }
+  .section-head .more{
+    font-size: 12px; color:#25272d;
+  }
+  .section-head .more::after{
+    content:"›"; margin-left:6px;
+  }
+
+  .event-wrap{
+    position:relative;
+    padding: 0 36px;
+  }
+  .event-row{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .ev-card{
+    background:#f5f5f5;
+    border-radius: 14px;
+    padding: 14px 14px 16px;
+    display:flex; flex-direction:column;
+    gap:10px;
+  }
+  .ev-meta{
+    display:flex; align-items:center; justify-content:space-between;
+    font-size:11.5px; color:#25272d;
+    letter-spacing:.04em;
+  }
+  .ev-tag{
+    font-size: 10.5px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background:#8068ff;
+    color:#fff;
+    font-weight:600;
+  }
+  .ev-tag.work{ background:#dff064; color:#25272d; }
+  .ev-tag.new{ background:#ff9ab6; color:#fff; }
+  .ev-tag.note{ background:#9DD9CC; color:#25272d; }
+  .ev-title{
+    font-size: 15px;
+    font-weight:700;
+    line-height:1.5;
+    margin: 4px 0 2px;
+  }
+  .ev-desc{
+    font-size: 11.5px;
+    line-height:1.7;
+    color:#3d3f44;
+  }
+  .ev-photo{
+    margin: auto -14px -16px;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    overflow:hidden;
+    aspect-ratio: 16/9;
+    background:#eee;
+  }
+  .ev-photo img{
+    width:100%; height:100%; object-fit:cover;
+  }
+  .ev-arrow{
+    position:absolute;
+    top: 50%; transform: translateY(-50%);
+    width: 34px; height: 34px;
+    border-radius:50%;
+    background:#fff;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+    display:flex; align-items:center; justify-content:center;
+    color:#9b9b9b;
+    font-size:14px;
+  }
+  .ev-arrow.left{ left:8px; }
+  .ev-arrow.right{ right:8px; }
+
+  /* ---------- News bar ---------- */
+  .news-bar{
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    margin: 28px 0 0;
+    padding: 14px 36px;
+    display:flex; align-items:center; gap:18px;
+    font-size: 12.5px;
+  }
+  .news-bar .lbl{ font-weight:700; letter-spacing:.16em; }
+  .news-bar .sep{ color:#ccc; }
+  .news-bar .date{ color:#25272d; }
+  .news-bar .txt{ color:#3d3f44; flex:1; }
+  .news-bar .more{
+    color:#25272d; display:inline-flex; align-items:center; gap:6px;
+  }
+
+  /* ---------- Strength ---------- */
+  .strength{
+    padding: 36px 36px 18px;
+  }
+  .strength-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom: 22px;
+  }
+  .strength-head h2{
+    font-size:24px; margin:0; letter-spacing:.06em;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-weight:700;
+  }
+  .strength-head .ja{ font-size:12px; color:#777; }
+  .str-row{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .str-item{
+    display:grid;
+    grid-template-columns: 60px 1fr;
+    gap: 10px;
+    align-items:start;
+  }
+  .str-icon-wrap{
+    width:54px; height:54px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .str-icon-wrap svg{ width:100%; height:100%; }
+  .str-num{
+    font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+    font-size: 22px; line-height:1;
+    color:#25272d;
+    letter-spacing:.02em;
+  }
+  .str-title{
+    font-size: 13px; font-weight:700;
+    margin: 4px 0 6px;
+  }
+  .str-desc{
+    font-size: 11px;
+    line-height:1.7;
+    color:#3d3f44;
+  }
+
+  /* ---------- Access ---------- */
+  .access{
+    padding: 30px 36px;
+    display:grid;
+    grid-template-columns: 270px 1fr 220px;
+    gap: 18px;
+    align-items:stretch;
+  }
+  .acc-left h2{
+    font-size: 24px; margin:0 0 4px; letter-spacing:.06em;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-weight:700;
+    display:flex; align-items:baseline; gap:12px;
+  }
+  .acc-left h2 .ja{ font-size:12px; color:#777; font-weight:400; }
+  .acc-left h3{
+    font-size: 14px; margin: 22px 0 18px;
+  }
+  .acc-row{
+    display:grid;
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    align-items:start;
+    margin-bottom: 14px;
+    font-size: 12px; line-height:1.7;
+  }
+  .acc-row .ico{
+    width:32px; height:32px;
+    color:#25272d;
+  }
+  .acc-row .ico svg{ width:100%; height:100%; }
+  .acc-row b{ font-weight:700; }
+  .map-frame{
+    border-radius: 14px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 70%, #efefef 0 4px, transparent 5px),
+      linear-gradient(135deg, #f4f1ea 0%, #ecedee 60%, #e3eaef 100%);
+    position:relative;
+    min-height: 200px;
+    box-shadow: inset 0 0 0 1px #eee;
+  }
+  .map-frame svg{ width:100%; height:100%; }
+  .shop-frame{
+    position:relative;
+    border-radius:14px;
+    overflow:hidden;
+    background:
+      repeating-linear-gradient(45deg, #ececec 0 8px, #f5f5f5 8px 16px);
+    min-height: 200px;
+    box-shadow: inset 0 0 0 1px #eee;
+  }
+  .shop-frame img{
+    width:100%; height:100%; object-fit:cover;
+  }
+  .park-badge{
+    position:absolute;
+    right: 14px; top: 50%; transform: translateY(-50%);
+    width: 86px; height: 86px;
+    border-radius:50%;
+    background:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: 2px;
+    font-size: 9.5px;
+    text-align:center; line-height:1.3;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+  .park-badge .lbl{
+    font-size: 10px; letter-spacing:.1em; font-weight:700;
+  }
+  .park-badge svg{ width:28px; height:28px; }
+
+  /* ---------- Price ---------- */
+  .price{
+    padding: 30px 36px;
+  }
+  .price-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom: 18px;
+  }
+  .price-head h2{ font-size:24px; margin:0; letter-spacing:.06em; font-family:"Helvetica Neue",Arial,sans-serif; font-weight:700; }
+  .price-head .ja{ font-size:12px; color:#777; }
+  .price-row{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .price-card{
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    padding: 18px 16px 20px;
+    text-align:center;
+    background:#fff;
+  }
+  .price-card .label{
+    font-size: 12px;
+    color:#3d3f44;
+    margin-bottom: 12px;
+  }
+  .price-card .val{
+    font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+    font-size: 30px;
+    font-weight:600;
+    margin-bottom: 14px;
+  }
+  .price-card .note{
+    font-size: 11px; line-height:1.7;
+    color:#3d3f44;
+  }
+  .price-card.center .val{
+    font-size: 16px; font-weight:700;
+    font-family: inherit;
+    margin-top: 8px;
+  }
+  .pay-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px 8px;
+    align-items:center; justify-items:center;
+    margin-top: 4px;
+  }
+  .pay-grid .pay{
+    font-size: 9.5px;
+    color:#3d3f44;
+    background:#f4f4f4;
+    border-radius: 4px;
+    padding: 4px 6px;
+    width:100%;
+    text-align:center;
+    letter-spacing:.02em;
+    font-weight:600;
+    line-height:1.1;
+  }
+  .pay-grid .pay.brand-visa{ color:#1a1f71; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-mc{ color:#eb001b; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-jcb{ color:#0e4c96; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-paypay{ color:#ff0033; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-dpay{ color:#cc0033; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-au{ color:#ff6600; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-rpay{ color:#bf0000; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-applepay{ color:#000; background:#fff; border:1px solid #e6e6e6; }
+  .pay-grid .pay.brand-paid{ color:#3a48a8; background:#fff; border:1px solid #e6e6e6; }
+
+  /* ---------- FAQ ---------- */
+  .faq{
+    padding: 30px 36px 40px;
+    display:grid;
+    grid-template-columns: 270px 1fr;
+    gap: 24px;
+    align-items:start;
+    position:relative;
+  }
+  .faq-left{ position:relative; }
+  .faq-left h2{
+    font-size:24px; margin:0 0 14px; letter-spacing:.06em;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-weight:700;
+    display:flex; align-items:baseline; gap:12px;
+  }
+  .faq-left h2 .ja{ font-size:12px; color:#777; font-weight:400; }
+  .faq-illustration{
+    position:relative;
+    width: 100%;
+    aspect-ratio: 1/.85;
+    background:
+      radial-gradient(140% 90% at 50% 50%, #f5f5f5 0%, #f5f5f5 60%, transparent 61%);
+    overflow:hidden;
+  }
+  .faq-illustration img{
+    width:100%; height:100%; object-fit:contain;
+  }
+  .faq-illustration .dots-deco{
+    position:absolute; right: 6px; top: 6px;
+    width: 100px; height: 100px;
+  }
+  .faq-list{
+    border-top: 1px solid #ececec;
+  }
+  .faq-list .row{
+    border-bottom: 1px solid #ececec;
+    display:grid;
+    grid-template-columns: 32px 1fr 32px;
+    gap: 8px;
+    align-items:center;
+    padding: 16px 8px;
+    font-size: 13.5px;
+  }
+  .faq-list .q{ color:#777; font-weight:600; }
+  .faq-list .plus{
+    width:24px; height:24px; display:flex; align-items:center; justify-content:center;
+    color:#9b9b9b; font-size: 18px;
+  }
+
+  /* ---------- LINE CTA ---------- */
+  .line-cta{
+    margin: 0 36px 40px;
+    background:#f5f5f5;
+    border-radius: 18px;
+    padding: 22px 26px;
+    display:grid;
+    grid-template-columns: 170px 1fr auto;
+    gap: 22px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .phone-mock{
+    position:relative;
+    width: 170px; height: 220px;
+    margin-bottom: -22px;
+    margin-top: -8px;
+  }
+  .phone-mock .phone-body{
+    position:absolute;
+    inset: 0 auto 0 0;
+    width: 130px; height: 100%;
+    background:#1f2024;
+    border-radius: 22px;
+    padding: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  }
+  .phone-mock .screen{
+    width:100%; height:100%;
+    background:#06C755; border-radius: 16px;
+    display:flex; flex-direction:column;
+    padding: 10px 8px;
+    gap: 5px;
+    overflow:hidden;
+  }
+  .phone-mock .bub{
+    background:#fff;
+    color: #25272d;
+    border-radius: 8px;
+    padding: 4px 6px;
+    font-size: 7px;
+    line-height: 1.3;
+    max-width: 80%;
+    word-break: break-all;
+    box-shadow: 0 1px 0 rgba(0,0,0,.04);
+  }
+  .phone-mock .bub.me{
+    align-self:flex-end;
+    background: #FFEB66;
+  }
+  .phone-mock .bub.them{ align-self:flex-start; }
+
+  .line-msg h3{
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight:700;
+  }
+  .line-list{
+    display:flex; flex-direction:column; gap:4px;
+    font-size: 12px;
+  }
+  .line-list li{
+    display:flex; align-items:center; gap:8px;
+  }
+  .line-list .check{
+    width: 14px; height: 14px; border-radius:50%;
+    background: #C8F000; color:#25272d;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size: 10px; font-weight:700;
+  }
+  .line-cta .right{
+    text-align:center;
+  }
+  .line-cta .ribbon{
+    font-size: 11px; color:#25272d; margin-bottom: 8px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .line-cta .ribbon::before,
+  .line-cta .ribbon::after{
+    content:""; width:14px; height:18px;
+    border-left: 1px solid #25272d;
+    transform: skewX(-18deg);
+    display:inline-block;
+  }
+  .line-cta .ribbon::after{
+    border-left:none; border-right: 1px solid #25272d;
+    transform: skewX(18deg);
+  }
+  .line-btn{
+    display:inline-flex; align-items:center; gap:12px;
+    background:#06C755; color:#fff;
+    padding: 16px 28px;
+    border-radius: 999px;
+    font-size: 16px; font-weight:700;
+    box-shadow: 0 4px 0 rgba(0,0,0,.06);
+  }
+  .line-btn .badge{
+    background:#fff; color:#06C755;
+    font-size: 11px; font-weight:700;
+    border-radius: 4px; padding: 3px 6px;
+    letter-spacing:.04em;
+  }
+  .line-cta .yume{
+    position:absolute;
+    bottom: 8px; right: 28%;
+    font-size: 10px; color:#9b9b9b;
+    transform: rotate(-4deg);
+  }
+
+  /* utility chip in price */
+  .price-card.payments{ text-align:left; padding: 16px 14px; }
+  .price-card.payments .label{ text-align:center; }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ============== Header ============== -->
+<header class="site-header">
+  <div class="logo-block">
+    <div class="logo-mark">LOGO</div>
+    <div class="logo-tag">FLOWER MATERIAL<br>WHOLESALE</div>
+  </div>
+  <nav class="nav">
+    <a href="#service">SERVICE</a>
+    <a href="#event">EVENT</a>
+    <a href="#strength">STRENGTH</a>
+    <a href="#access">ACCESS</a>
+    <a href="#price">PRICE</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="header-cta" href="#line">
+    <span class="badge">LINE</span>
+    LINEで相談する
+  </a>
+</header>
+
+<!-- ============== Hero ============== -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">見て、触れて、選べるからこそ、<br>理想の花づくりに近づく。</p>
+    <h1 class="hero-title">
+      いい<span class="acc">資材</span>が、<br>
+      いい<span class="acc">作品</span>を<br>
+      つくる。
+    </h1>
+    <p class="hero-sub">
+      フラワーデザイナーの「つくりたい」を叶える<br>
+      花材卸の卸売パートナー。
+    </p>
+
+    <!-- feature row -->
+    <div class="feature-row">
+      <div class="feature">
+        <div class="ico">
+          <!-- store icon (inline SVG from svg-parts) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 28 32 12l21 16"></path><path d="M16 27v24h32V27"></path><path d="M25 51V36h14v15"></path><path d="M21 25v-8h8"></path><path d="M43 31h-8v8h8z"></path></svg>
+        </div>
+        <div class="lbl">店頭で実物を見て<br>選べる豊富な品揃え</div>
+      </div>
+      <div class="feature">
+        <div class="ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 50h40"></path><path d="M16 46 29 33l8 8 15-21"></path><path d="M43 20h9v9"></path></svg>
+        </div>
+        <div class="lbl">西日本最大の花市場で<br>25年間の販売実績</div>
+      </div>
+      <div class="feature">
+        <div class="ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="21"></circle><path d="M26 45V19h10a8 8 0 0 1 0 16H26"></path></svg>
+        </div>
+        <div class="lbl">駐車場完備で<br>お車でも安心</div>
+      </div>
+      <div class="feature">
+        <div class="ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="20" width="40" height="28" rx="3"></rect><path d="M12 28h40"></path><path d="M20 39h10"></path><path d="M40 39h4"></path><path d="M22 16h20"></path></svg>
+        </div>
+        <div class="lbl">各種キャッシュレス<br>決済利用OK</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <!-- dots top-left -->
+    <svg class="dots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+      <g fill="#8068ff">
+        <circle cx="20" cy="15" r="2.1" opacity="0.35"></circle><circle cx="40" cy="15" r="2.1" opacity="0.45"></circle><circle cx="60" cy="15" r="2.1" opacity="0.55"></circle><circle cx="80" cy="15" r="2.1" opacity="0.35"></circle><circle cx="100" cy="15" r="2.1" opacity="0.45"></circle>
+        <circle cx="20" cy="35" r="2.1" opacity="0.45"></circle><circle cx="40" cy="35" r="2.1" opacity="0.55"></circle><circle cx="60" cy="35" r="2.1" opacity="0.35"></circle><circle cx="80" cy="35" r="2.1" opacity="0.45"></circle><circle cx="100" cy="35" r="2.1" opacity="0.55"></circle>
+        <circle cx="20" cy="55" r="2.1" opacity="0.55"></circle><circle cx="40" cy="55" r="2.1" opacity="0.35"></circle><circle cx="60" cy="55" r="2.1" opacity="0.45"></circle><circle cx="80" cy="55" r="2.1" opacity="0.55"></circle><circle cx="100" cy="55" r="2.1" opacity="0.35"></circle>
+        <circle cx="20" cy="75" r="2.1" opacity="0.35"></circle><circle cx="40" cy="75" r="2.1" opacity="0.45"></circle><circle cx="60" cy="75" r="2.1" opacity="0.55"></circle><circle cx="80" cy="75" r="2.1" opacity="0.35"></circle><circle cx="100" cy="75" r="2.1" opacity="0.45"></circle>
+        <circle cx="20" cy="95" r="2.1" opacity="0.45"></circle><circle cx="40" cy="95" r="2.1" opacity="0.55"></circle><circle cx="60" cy="95" r="2.1" opacity="0.35"></circle><circle cx="80" cy="95" r="2.1" opacity="0.45"></circle><circle cx="100" cy="95" r="2.1" opacity="0.55"></circle>
+      </g>
+    </svg>
+
+    <!-- lime blob behind photo -->
+    <svg class="lime-blob" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180">
+      <path d="M38 151C6 125 7 67 43 37 77 9 129 0 173 20c39 18 54 59 37 91-18 35-63 42-102 54-27 8-50 4-70-14Z" fill="#C8F000"></path>
+    </svg>
+
+    <!-- the photo masked into a blob using svg as mask -->
+    <div class="photo-blob" style="
+      --blob-mask: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 540 470&quot; preserveAspectRatio=&quot;none&quot;><path d=&quot;M268 8c95-22 192 22 232 86 47 73 26 184-43 250-66 64-178 91-262 56-79-33-122-114-127-194-5-90 53-186 200-198z&quot; fill=&quot;black&quot;/></svg>');
+    ">
+      <img src="assets/svg-parts/decorations/hero_photo_blob.png" alt="花屋の店内">
+    </div>
+
+    <!-- script-style english text decorations -->
+    <div class="script-text">Good Materials,</div>
+    <div class="script-text lower">Great Designs.</div>
+
+    <!-- pink wavy line -->
+    <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" fill="none">
+      <path d="M5 55c24-34 39 13 65-11 22-20 32-42 54-21 20 20 38 38 85-4" stroke="#FF9AB6" stroke-width="3" stroke-linecap="round"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ============== Event ============== -->
+<div class="section-head" id="event">
+  <div class="group">
+    <h2>EVENT</h2>
+    <span class="ja">イベント・お知らせ</span>
+  </div>
+  <a class="more" href="#">もっと見る</a>
+</div>
+
+<section class="event-wrap">
+  <button class="ev-arrow left" aria-label="前へ">‹</button>
+  <button class="ev-arrow right" aria-label="次へ">›</button>
+  <div class="event-row">
+    <article class="ev-card">
+      <div class="ev-meta">
+        <span class="date">2026.05.10</span>
+        <span class="ev-tag">展示会</span>
+      </div>
+      <h3 class="ev-title">Bloom Market 2025<br>に出展します</h3>
+      <p class="ev-desc">最新の資材やデザインをご覧いただける展示会に出展します。ぜひお立ち寄りください。</p>
+      <div class="ev-photo"><img src="assets/svg-parts/cards/event_photo_01.png" alt=""></div>
+    </article>
+
+    <article class="ev-card">
+      <div class="ev-meta">
+        <span class="date">2026.04.28</span>
+        <span class="ev-tag work">ワークショップ</span>
+      </div>
+      <h3 class="ev-title">ドライフラワーの<br>リース作りWS開催</h3>
+      <p class="ev-desc">人気フローリストによるワークショップを開催します。初心者の方も大歓迎です。</p>
+      <div class="ev-photo"><img src="assets/svg-parts/cards/event_photo_02.png" alt=""></div>
+    </article>
+
+    <article class="ev-card">
+      <div class="ev-meta">
+        <span class="date">2026.04.15</span>
+        <span class="ev-tag new">新商品</span>
+      </div>
+      <h3 class="ev-title">新しい花器と<br>リボンが<br>入荷しました</h3>
+      <p class="ev-desc">春のアレンジにぴったりの花器や、上質なリボンを多数ご用意しました。</p>
+      <div class="ev-photo"><img src="assets/svg-parts/cards/event_photo_03.png" alt=""></div>
+    </article>
+
+    <article class="ev-card">
+      <div class="ev-meta">
+        <span class="date">2026.04.01</span>
+        <span class="ev-tag note">お知らせ</span>
+      </div>
+      <h3 class="ev-title">ゴールデンウィークの<br>営業について</h3>
+      <p class="ev-desc">GW期間中の営業日・配送スケジュールのご案内です。ご確認をお願いいたします。</p>
+      <div class="ev-photo"><img src="assets/svg-parts/cards/event_photo_04.png" alt=""></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============== News ============== -->
+<div class="news-bar">
+  <span class="lbl">NEWS</span>
+  <span class="sep">|</span>
+  <span class="date">2026.04.01</span>
+  <span class="sep">|</span>
+  <span class="txt">価格改定のお知らせ（一部商品につきまして価格を改定させていただきます）</span>
+  <a class="more" href="#">一覧を見る →</a>
+</div>
+
+<!-- ============== Strength ============== -->
+<section class="strength" id="strength">
+  <div class="strength-head">
+    <h2>STRENGTH</h2>
+    <span class="ja">選ばれる理由</span>
+  </div>
+  <div class="str-row">
+    <div class="str-item">
+      <div class="str-icon-wrap" style="background:transparent;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" fill="#C8F000"></circle>
+          <path d="M33 47V18" stroke="#25272d" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M33 37c-9-1-15-7-17-17 11 1 17 7 17 17Z" stroke="#25272d" stroke-width="2" stroke-linejoin="round"></path>
+          <path d="M33 31c7-1 12-5 14-13-8 1-13 5-14 13Z" stroke="#25272d" stroke-width="2" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div>
+        <div class="str-num">01</div>
+        <div class="str-title">豊富な品揃え</div>
+        <div class="str-desc">生花・ドライ・プリザーブド・リボン・花器など幅広くご用意。</div>
+      </div>
+    </div>
+
+    <div class="str-item">
+      <div class="str-icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" fill="#FF9AB6"></circle>
+          <path d="M14 34l8-8 5 3 4-3 6 4 5-3 8 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M27 28l5 5 5-3 5 4-7 7c-2 2-5 2-7 0l-3-3c-1-1-1-3 0-4l2-2c1-1 3-1 4 0" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M22 42l-3-2M48 38l3 2" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div>
+        <div class="str-num">02</div>
+        <div class="str-title">西日本最大の花市場で<br>25年間の販売実績</div>
+        <div class="str-desc">プロの現場を支えてきた信頼と実績があります。</div>
+      </div>
+    </div>
+
+    <div class="str-item">
+      <div class="str-icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" fill="#E8E2FF"></circle>
+          <circle cx="32" cy="26" r="6" stroke="#6b5fb6" stroke-width="2"></circle>
+          <path d="M20 46c2-7 8-10 12-10s10 3 12 10" stroke="#6b5fb6" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div>
+        <div class="str-num">03</div>
+        <div class="str-title">デザイナー目線の提案</div>
+        <div class="str-desc">現場の声を活かしたご提案をお届けします。</div>
+      </div>
+    </div>
+
+    <div class="str-item">
+      <div class="str-icon-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" fill="#9DD9CC"></circle>
+          <path d="M44 28c0 6-5 10-12 10-1 0-3 0-4-.5L21 41l1.5-5C20 34 19 31 19 28c0-6 6-10 12-10s13 4 13 10Z" fill="#fff"></path>
+          <path d="M25 28h2m4 0h2m4 0h2" stroke="#9DD9CC" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div>
+        <div class="str-num">04</div>
+        <div class="str-title">LINEでラクラク相談・発注</div>
+        <div class="str-desc">店頭にない商品もLINEで取り寄せ可能！メッセージ1通で発注もできます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Access ============== -->
+<section class="access" id="access">
+  <div class="acc-left">
+    <h2>ACCESS <span class="ja">アクセス</span></h2>
+    <h3>店舗までのアクセス</h3>
+    <div class="acc-row">
+      <div class="ico" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="5" width="16" height="18" rx="3"></rect>
+          <path d="M8 18h16"></path>
+          <circle cx="12" cy="21" r="1.2" fill="#25272d"></circle>
+          <circle cx="20" cy="21" r="1.2" fill="#25272d"></circle>
+          <path d="M11 25l-2 3M21 25l2 3"></path>
+        </svg>
+      </div>
+      <div>
+        <b>電車でお越しの方</b><br>
+        Osaka Metro 長堀鶴見緑地線「門真南駅」<br>
+        ②番出口より徒歩 約7分
+      </div>
+    </div>
+    <div class="acc-row">
+      <div class="ico" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="16" cy="16" r="12"></circle>
+          <path d="M12 23V9h6a4.5 4.5 0 0 1 0 9h-6"></path>
+        </svg>
+      </div>
+      <div>
+        <b>お車でお越しの方</b><br>
+        駐車場あり（無料）。<br>
+        お車でのご来店も安心です。
+      </div>
+    </div>
+  </div>
+
+  <!-- 中央：地図プレースホルダ（Sprint 2 で AI 生成イラストまたは Google Maps Embed に差し替え） -->
+  <div class="map-frame" role="img" aria-label="店舗付近の地図プレースホルダ">
+    <!-- TODO: replace with AI-generated map illustration or Google Maps Embed -->
+  </div>
+
+  <!-- 右：店舗外観写真プレースホルダ + PARKING バッジ -->
+  <div class="shop-frame">
+    <!-- TODO: replace with AI-generated shop exterior photo -->
+    <div class="park-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#25272d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="16" cy="16" r="13"></circle>
+        <path d="M12 23V9h6a4.5 4.5 0 0 1 0 9h-6"></path>
+      </svg>
+      <span class="lbl">PARKING</span>
+      <span>駐車場あり</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Price ============== -->
+<section class="price" id="price">
+  <div class="price-head">
+    <h2>PRICE</h2>
+    <span class="ja">料金・取引条件</span>
+  </div>
+  <div class="price-row">
+    <div class="price-card">
+      <div class="label">初回登録・年会費</div>
+      <div class="val">¥0</div>
+      <div class="note">登録・年会費は<br>一切かかりません。</div>
+    </div>
+    <div class="price-card center">
+      <div class="label">最小ロット</div>
+      <div class="val">お問い合わせください</div>
+      <div class="note">商品により異なりますので、<br>お気軽にご相談ください。</div>
+    </div>
+    <div class="price-card">
+      <div class="label">送料</div>
+      <div class="val">¥0</div>
+      <div class="note">一定金額以上のご注文で<br>送料無料！</div>
+    </div>
+    <div class="price-card payments">
+      <div class="label">お支払い方法</div>
+      <div class="pay-grid">
+        <span class="pay brand-visa">VISA</span>
+        <span class="pay brand-mc">Master</span>
+        <span class="pay brand-jcb">JCB</span>
+        <span class="pay brand-paypay">PayPay</span>
+        <span class="pay brand-dpay">d払い</span>
+        <span class="pay brand-au">au PAY</span>
+        <span class="pay brand-rpay">楽天ペイ</span>
+        <span class="pay brand-applepay">Apple Pay</span>
+        <span class="pay brand-paid">Paid</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="faq" id="faq">
+  <div class="faq-left">
+    <h2>FAQ <span class="ja">よくあるご質問</span></h2>
+    <div class="faq-illustration">
+      <img src="assets/svg-parts/decorations/faq_illustration.png" alt="花器">
+      <svg class="dots-deco" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+        <g fill="#8068ff">
+          <circle cx="20" cy="15" r="2.1" opacity="0.35"></circle><circle cx="40" cy="15" r="2.1" opacity="0.45"></circle><circle cx="60" cy="15" r="2.1" opacity="0.55"></circle>
+          <circle cx="20" cy="35" r="2.1" opacity="0.45"></circle><circle cx="40" cy="35" r="2.1" opacity="0.55"></circle><circle cx="60" cy="35" r="2.1" opacity="0.35"></circle>
+          <circle cx="20" cy="55" r="2.1" opacity="0.55"></circle><circle cx="40" cy="55" r="2.1" opacity="0.35"></circle><circle cx="60" cy="55" r="2.1" opacity="0.45"></circle>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="faq-list">
+    <div class="row"><span class="q">Q.</span><span>初めてでも注文できますか？</span><span class="plus">+</span></div>
+    <div class="row"><span class="q">Q.</span><span>どのくらいで商品は届きますか？</span><span class="plus">+</span></div>
+    <div class="row"><span class="q">Q.</span><span>返品・交換はできますか？</span><span class="plus">+</span></div>
+    <div class="row"><span class="q">Q.</span><span>店頭にない商品は取り寄せできますか？</span><span class="plus">+</span></div>
+    <div class="row"><span class="q">Q.</span><span>支払い方法は何がありますか？</span><span class="plus">+</span></div>
+  </div>
+</section>
+
+<!-- ============== LINE CTA ============== -->
+<section class="line-cta" id="line" aria-label="LINEで相談">
+  <!-- 左：スマホモック -->
+  <div class="phone-mock" aria-hidden="true">
+    <div class="phone-body">
+      <div class="screen">
+        <div class="bub them">この商品の在庫はありますか？</div>
+        <div class="bub me">在庫ございます！<br>ご来店お待ちしています。</div>
+        <div class="bub them">取り寄せもできますか？</div>
+        <div class="bub me">はい、可能です。<br>商品名をお送りください。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 中央：見出し + チェックリスト -->
+  <div class="line-msg">
+    <h3>LINEでつながって、<br>もっと自由に、もっと楽しく。</h3>
+    <ul class="line-list">
+      <li><span class="check" aria-hidden="true">✓</span>商品相談・取り寄せ依頼</li>
+      <li><span class="check" aria-hidden="true">✓</span>在庫確認・入荷情報のお知らせ</li>
+      <li><span class="check" aria-hidden="true">✓</span>LINEメッセージで簡単発注</li>
+    </ul>
+  </div>
+
+  <!-- 右：リボンキャプション + 大型ボタン -->
+  <div class="right">
+    <div class="ribbon">店頭にない商品もLINEで取り寄せOK</div>
+    <a class="line-btn" href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener">
+      <span class="badge">LINE</span>
+      LINEで相談・発注する
+    </a>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
