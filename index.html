@@ -640,6 +640,14 @@
   .price-card.payments{ text-align:left; padding: 16px 14px; }
   .price-card.payments .label{ text-align:center; }
 
+  /* LINE CTA: 元の LP.png 切り出し画像でレンダリング (Sprint 2 で AI 画像差し替え予定) */
+  .line-cta-img{
+    padding: 24px 36px 40px;
+  }
+  .line-cta-img img{
+    width: 100%; height:auto; display:block;
+  }
+  .line-cta-img a{ display:block; }
 </style>
 </head>
 <body>
@@ -999,38 +1007,9 @@
   </div>
 </section>
 
-<!-- ============== LINE CTA ============== -->
-<section class="line-cta" id="line" aria-label="LINEで相談">
-  <!-- 左：スマホモック -->
-  <div class="phone-mock" aria-hidden="true">
-    <div class="phone-body">
-      <div class="screen">
-        <div class="bub them">この商品の在庫はありますか？</div>
-        <div class="bub me">在庫ございます！<br>ご来店お待ちしています。</div>
-        <div class="bub them">取り寄せもできますか？</div>
-        <div class="bub me">はい、可能です。<br>商品名をお送りください。</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 中央：見出し + チェックリスト -->
-  <div class="line-msg">
-    <h3>LINEでつながって、<br>もっと自由に、もっと楽しく。</h3>
-    <ul class="line-list">
-      <li><span class="check" aria-hidden="true">✓</span>商品相談・取り寄せ依頼</li>
-      <li><span class="check" aria-hidden="true">✓</span>在庫確認・入荷情報のお知らせ</li>
-      <li><span class="check" aria-hidden="true">✓</span>LINEメッセージで簡単発注</li>
-    </ul>
-  </div>
-
-  <!-- 右：リボンキャプション + 大型ボタン -->
-  <div class="right">
-    <div class="ribbon">店頭にない商品もLINEで取り寄せOK</div>
-    <a class="line-btn" href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener">
-      <span class="badge">LINE</span>
-      LINEで相談・発注する
-    </a>
-  </div>
+<!-- ============== LINE CTA (LP.png crop / manifest 10_line_cta) ============== -->
+<section class="line-cta-img" id="line" aria-label="LINEで相談">
+  <a href="https://lin.ee/v4E9XHO" target="_blank" rel="noopener"><img src="assets/svg-parts/sections/10_line_cta.png" alt="LINEで相談・発注する"></a>
 </section>
 
 </div>
