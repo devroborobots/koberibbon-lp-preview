@@ -1,0 +1,1 @@
+import{V as r}from"./vanilla-tilt.es2015-CoptQxbp.js";const t=window.matchMedia("(prefers-reduced-motion: reduce)").matches;t||document.querySelectorAll(".iphone-frame").forEach(e=>{r.init(e,{max:12,speed:400,glare:!1,perspective:1800,startX:-12,startY:2})});
