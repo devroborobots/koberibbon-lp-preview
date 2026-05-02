@@ -232,12 +232,11 @@
         display: grid;
         place-items: center;
         flex-shrink: 0;
-        font-size: 18px;
-        line-height: 1;
-        overflow: hidden;
-        font-family:
-          "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Hiragino Sans",
-          "Yu Gothic UI", sans-serif;
+      }
+      .tulip-icon {
+        width: 22px;
+        height: 22px;
+        display: block;
       }
 
       .bubble {
@@ -435,7 +434,28 @@
                 </div>
                 <div class="chat">
                   <div class="row in">
-                    <div class="avatar">🌷</div>
+                    <div class="avatar">
+                      <svg viewBox="0 0 24 24" class="tulip-icon" aria-hidden="true">
+                        <path
+                          d="M12 14V21"
+                          stroke="#5BAA47"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                        <path d="M12 19C9 19 6 17 5 14C8 13 11 14.5 12 17V19Z" fill="#7BC267" />
+                        <path
+                          d="M7 8C7 5.5 9 3.5 12 3.5C15 3.5 17 5.5 17 8V11.5C17 12.9 15.5 14 12 14C8.5 14 7 12.9 7 11.5V8Z"
+                          fill="#F4719C"
+                        />
+                        <path
+                          d="M12 3.5L12 14M9 4.5C9.5 7 10 10 11 12.5M15 4.5C14.5 7 14 10 13 12.5"
+                          stroke="#D85084"
+                          stroke-width="0.5"
+                          fill="none"
+                          opacity="0.6"
+                        />
+                      </svg>
+                    </div>
                     <div class="bubble in">
                       友だち追加ありがとうございます！<br />
                       花資材の卸売パートナーです🌿<br />
@@ -450,7 +470,28 @@
                   </div>
 
                   <div class="row in">
-                    <div class="avatar">🌷</div>
+                    <div class="avatar">
+                      <svg viewBox="0 0 24 24" class="tulip-icon" aria-hidden="true">
+                        <path
+                          d="M12 14V21"
+                          stroke="#5BAA47"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                        <path d="M12 19C9 19 6 17 5 14C8 13 11 14.5 12 17V19Z" fill="#7BC267" />
+                        <path
+                          d="M7 8C7 5.5 9 3.5 12 3.5C15 3.5 17 5.5 17 8V11.5C17 12.9 15.5 14 12 14C8.5 14 7 12.9 7 11.5V8Z"
+                          fill="#F4719C"
+                        />
+                        <path
+                          d="M12 3.5L12 14M9 4.5C9.5 7 10 10 11 12.5M15 4.5C14.5 7 14 10 13 12.5"
+                          stroke="#D85084"
+                          stroke-width="0.5"
+                          fill="none"
+                          opacity="0.6"
+                        />
+                      </svg>
+                    </div>
                     <div class="bubble in">
                       承知しました！<br />
                       簡単に店舗のイメージや用途を<br />
@@ -465,7 +506,28 @@
                   </div>
 
                   <div class="row in">
-                    <div class="avatar">🌷</div>
+                    <div class="avatar">
+                      <svg viewBox="0 0 24 24" class="tulip-icon" aria-hidden="true">
+                        <path
+                          d="M12 14V21"
+                          stroke="#5BAA47"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                        <path d="M12 19C9 19 6 17 5 14C8 13 11 14.5 12 17V19Z" fill="#7BC267" />
+                        <path
+                          d="M7 8C7 5.5 9 3.5 12 3.5C15 3.5 17 5.5 17 8V11.5C17 12.9 15.5 14 12 14C8.5 14 7 12.9 7 11.5V8Z"
+                          fill="#F4719C"
+                        />
+                        <path
+                          d="M12 3.5L12 14M9 4.5C9.5 7 10 10 11 12.5M15 4.5C14.5 7 14 10 13 12.5"
+                          stroke="#D85084"
+                          stroke-width="0.5"
+                          fill="none"
+                          opacity="0.6"
+                        />
+                      </svg>
+                    </div>
                     <div class="bubble in">
                       承りがとうございます！<br />
                       それでは、ナチュラルな雰囲気に<br />
@@ -545,6 +607,7 @@
                 <path
                   d="M6 74C6 35.3401 37.3401 4 76 4H356C394.66 4 426 35.3401 426 74V808C426 846.66 394.66 878 356 878H76C37.3401 878 6 846.66 6 808V74Z"
                   fill="#0A0A0A"
+                  fill-opacity="0.55"
                 />
                 <!-- 内側ベベル: 縁の鏡面ハイライト -->
                 <path
@@ -587,15 +650,20 @@
                   y2="0"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop offset="0%" stop-color="#15151A" />
-                  <stop offset="6%" stop-color="#3F3F44" />
-                  <stop offset="20%" stop-color="#5C5C62" />
-                  <stop offset="38%" stop-color="#2A2A2E" />
-                  <stop offset="50%" stop-color="#222226" />
-                  <stop offset="62%" stop-color="#2A2A2E" />
-                  <stop offset="80%" stop-color="#5C5C62" />
-                  <stop offset="94%" stop-color="#3F3F44" />
-                  <stop offset="100%" stop-color="#15151A" />
+                  <!-- 左フレーム可視域 (0-4.91%) に金属ハイライトを集中 -->
+                  <stop offset="0%" stop-color="#0A0A0A" />
+                  <stop offset="1%" stop-color="#2C2C30" />
+                  <stop offset="2.5%" stop-color="#7A7A82" />
+                  <stop offset="4%" stop-color="#2C2C30" />
+                  <stop offset="4.91%" stop-color="#1A1A1C" />
+                  <!-- 中央フラット (見えない領域) -->
+                  <stop offset="50%" stop-color="#1A1A1C" />
+                  <!-- 右フレーム可視域 (95.09-100%) に対称ハイライト -->
+                  <stop offset="95.09%" stop-color="#1A1A1C" />
+                  <stop offset="96%" stop-color="#2C2C30" />
+                  <stop offset="97.5%" stop-color="#7A7A82" />
+                  <stop offset="99%" stop-color="#2C2C30" />
+                  <stop offset="100%" stop-color="#0A0A0A" />
                 </linearGradient>
                 <!-- 内側ベベル: スクリーン縁の鏡面ハイライト (上下方向) -->
                 <linearGradient
