@@ -189,11 +189,14 @@
         height: 18px;
         color: #fff;
         fill: currentColor;
-        stroke: currentColor;
+        /* stroke はアイコン側 SVG の attribute に任せる
+           （CSS で stroke: currentColor を強制すると fill ベースの shield が
+           viewBox 境界で stroke 線にクリップされ右下が欠ける）*/
       }
       .line-icon.back {
         width: 14px;
         height: 22px;
+        stroke: currentColor;
       }
       .line-icon.badge {
         width: 18px;
@@ -362,6 +365,7 @@
         height: 18px;
         margin-left: auto;
         flex-shrink: 0;
+        color: #888;
       }
       .status-icon {
         width: 14px;
@@ -430,31 +434,31 @@
                   <span>9:41</span>
                   <span class="status-icons">
                     <svg class="status-icon" aria-label="信号">
-                      <use href="../assets/icons-DPGHdanN.svg#i-cellular" />
+                      <use href="../assets/icons-ClHkwzlq.svg#i-cellular" />
                     </svg>
                     <svg class="status-icon" aria-label="Wi-Fi">
-                      <use href="../assets/icons-DPGHdanN.svg#i-wifi" />
+                      <use href="../assets/icons-ClHkwzlq.svg#i-wifi" />
                     </svg>
                     <span class="battery"></span>
                   </span>
                 </div>
                 <div class="line-header">
                   <svg class="line-icon back" aria-label="戻る">
-                    <use href="../assets/icons-DPGHdanN.svg#i-back" />
+                    <use href="../assets/icons-ClHkwzlq.svg#i-back" />
                   </svg>
                   <svg class="line-icon badge" aria-label="公式アカウント">
-                    <use href="../assets/icons-DPGHdanN.svg#i-shield" />
+                    <use href="../assets/icons-ClHkwzlq.svg#i-shield" />
                   </svg>
                   <span class="title">花資材の卸売パートナー</span>
                   <span class="icons">
                     <svg class="line-icon" aria-label="検索">
-                      <use href="../assets/icons-DPGHdanN.svg#i-search" />
+                      <use href="../assets/icons-ClHkwzlq.svg#i-search" />
                     </svg>
                     <svg class="line-icon" aria-label="電話">
-                      <use href="../assets/icons-DPGHdanN.svg#i-phone" />
+                      <use href="../assets/icons-ClHkwzlq.svg#i-phone" />
                     </svg>
                     <svg class="line-icon" aria-label="メニュー">
-                      <use href="../assets/icons-DPGHdanN.svg#i-menu" />
+                      <use href="../assets/icons-ClHkwzlq.svg#i-menu" />
                     </svg>
                   </span>
                 </div>
@@ -586,22 +590,22 @@
                 </div>
                 <div class="input-bar">
                   <svg class="bar-icon" aria-label="追加">
-                    <use href="../assets/icons-DPGHdanN.svg#i-plus" />
+                    <use href="../assets/icons-ClHkwzlq.svg#i-plus" />
                   </svg>
                   <svg class="bar-icon" aria-label="カメラ">
-                    <use href="../assets/icons-DPGHdanN.svg#i-camera" />
+                    <use href="../assets/icons-ClHkwzlq.svg#i-camera" />
                   </svg>
                   <svg class="bar-icon" aria-label="画像">
-                    <use href="../assets/icons-DPGHdanN.svg#i-image" />
+                    <use href="../assets/icons-ClHkwzlq.svg#i-image" />
                   </svg>
                   <div class="field">
                     <span>Aa</span>
                     <svg class="field-emoji" aria-label="絵文字">
-                      <use href="../assets/icons-DPGHdanN.svg#i-smile" />
+                      <use href="../assets/icons-ClHkwzlq.svg#i-smile" />
                     </svg>
                   </div>
                   <svg class="bar-icon" aria-label="マイク">
-                    <use href="../assets/icons-DPGHdanN.svg#i-mic" />
+                    <use href="../assets/icons-ClHkwzlq.svg#i-mic" />
                   </svg>
                 </div>
               </div>
