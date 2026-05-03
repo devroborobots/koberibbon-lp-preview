@@ -5,7 +5,11 @@
 
 ## プレビュー URL
 
-**https://devroborobots.github.io/koberibbon-lp-preview/**
+| バリエーション | URL |
+|---|---|
+| 採用案（v3） | https://devroborobots.github.io/koberibbon-lp-preview/ |
+| 派生案（newwebsite-alt） | https://devroborobots.github.io/koberibbon-lp-preview/newwebsite-alt/ |
+| iPhone モックアップ（参考） | https://devroborobots.github.io/koberibbon-lp-preview/iphone-mockup/ |
 
 ## ステータス
 
