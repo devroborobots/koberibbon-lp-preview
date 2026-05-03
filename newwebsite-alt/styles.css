@@ -373,21 +373,30 @@ h1, h2, h3, p { margin: 0; }
 }
 
 .decor-pink-dots-event {
-  width: 56px;
-  top: -10px;
-  left: 0;
+  width: 60px;
+  top: -14px;
+  left: -8px;
   z-index: 0;
-  opacity: 0.85;
+  opacity: 0.9;
   pointer-events: none;
 }
 .event-section .section-head { position: relative; z-index: 2; }
 .decor-side-pink-mid {
-  width: 50px;
-  top: 80px;
-  right: 0;
+  width: 56px;
+  top: 240px;
+  right: -10px;
   z-index: 0;
   opacity: 0.85;
   pointer-events: none;
+}
+.decor-side-pink-event-left {
+  width: 48px;
+  top: 60px;
+  left: -10px;
+  z-index: 0;
+  opacity: 0.85;
+  pointer-events: none;
+  transform: scaleX(-1);
 }
 .event-section .event-grid { position: relative; z-index: 2; }
 
@@ -550,11 +559,21 @@ h1, h2, h3, p { margin: 0; }
 }
 
 .decor-squiggle {
-  width: 80px;
-  bottom: 20px;
-  right: 16px;
+  width: 70px;
+  bottom: 30px;
+  right: 8px;
   z-index: 0;
   opacity: 0.85;
+}
+.decor-side-pink-access {
+  position: absolute;
+  width: 50px;
+  bottom: 30px;
+  left: -10px;
+  z-index: 0;
+  opacity: 0.85;
+  pointer-events: none;
+  transform: scaleX(-1);
 }
 
 /* ============== STRENGTH ============== */
@@ -692,11 +711,21 @@ h1, h2, h3, p { margin: 0; }
 .payment-row img { width: 100%; height: auto; }
 
 .decor-side-mint-price {
-  width: 90px;
-  top: -10px;
-  right: 0;
+  width: 70px;
+  top: 30px;
+  right: -10px;
   z-index: 0;
-  opacity: 0.55;
+  opacity: 0.7;
+}
+.decor-side-mint-price-left {
+  position: absolute;
+  width: 56px;
+  bottom: 0;
+  left: -10px;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+  transform: scaleX(-1);
 }
 
 /* ============== FAQ ============== */
@@ -756,14 +785,24 @@ h1, h2, h3, p { margin: 0; }
 }
 
 .decor-mint-faq {
-  width: 50px;
-  top: -8px;
-  left: 200px;
+  width: 80px;
+  top: 20px;
+  left: -16px;
   z-index: 0;
   opacity: 0.6;
   pointer-events: none;
 }
+.decor-faq-curly {
+  position: absolute;
+  width: 80px;
+  top: 50px;
+  right: -8px;
+  z-index: 0;
+  opacity: 0.85;
+  pointer-events: none;
+}
 .faq-section .section-title { position: relative; z-index: 2; }
+.faq-section .faq-grid { position: relative; z-index: 2; }
 
 /* ============== BOTTOM CTA ============== */
 .bottom-cta {
