@@ -229,7 +229,7 @@
       .row {
         display: flex;
         gap: 6px;
-        align-items: flex-end;
+        align-items: flex-start;
       }
       .row.out {
         justify-content: flex-end;
@@ -240,10 +240,17 @@
         border-radius: 50%;
         background: #5baa47;
         flex-shrink: 0;
+        display: grid;
+        place-items: center;
         /* bubble.in::after (chat-bg 色のしっぽ背景) が avatar の右下を
            覆って切れて見えるのを防ぐため、stacking context を作って前面へ */
         position: relative;
         z-index: 1;
+      }
+      .person-icon {
+        width: 22px;
+        height: 22px;
+        display: block;
       }
 
       .bubble {
@@ -256,54 +263,56 @@
         position: relative;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
       }
-      /* === Bubble tails (v3 — Samuel Kraft method) === */
+      /* === Bubble tails (v7 — top-anchored to align with avatar) === */
       .bubble.in {
         background: var(--bubble-in);
         border-radius: 16px;
+        border-top-left-radius: 4px;
       }
       .bubble.in::before {
         content: "";
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: -7px;
         width: 16px;
         height: 18px;
         background: var(--bubble-in);
-        border-bottom-right-radius: 14px 12px;
+        border-top-right-radius: 14px 12px;
       }
       .bubble.in::after {
         content: "";
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: -22px;
         width: 22px;
         height: 18px;
         background: var(--chat-bg);
-        border-bottom-right-radius: 9px;
+        border-top-right-radius: 9px;
       }
       .bubble.out {
         background: var(--bubble-out);
         border-radius: 16px;
+        border-top-right-radius: 4px;
       }
       .bubble.out::before {
         content: "";
         position: absolute;
-        bottom: 0;
+        top: 0;
         right: -7px;
         width: 16px;
         height: 18px;
         background: var(--bubble-out);
-        border-bottom-left-radius: 14px 12px;
+        border-top-left-radius: 14px 12px;
       }
       .bubble.out::after {
         content: "";
         position: absolute;
-        bottom: 0;
+        top: 0;
         right: -22px;
         width: 22px;
         height: 18px;
         background: var(--chat-bg);
-        border-bottom-left-radius: 9px;
+        border-top-left-radius: 9px;
       }
       .meta {
         font-size: 9px;
@@ -461,7 +470,15 @@
                 </div>
                 <div class="chat">
                   <div class="row in">
-                    <div class="avatar"></div>
+                    <div class="avatar">
+                      <svg viewBox="0 0 24 24" class="person-icon" aria-hidden="true">
+                        <circle cx="12" cy="8.5" r="3.5" fill="#fff" />
+                        <path
+                          d="M5 21V20C5 16.5 8.2 14.5 12 14.5C15.8 14.5 19 16.5 19 20V21Z"
+                          fill="#fff"
+                        />
+                      </svg>
+                    </div>
                     <div class="bubble in">
                       友だち追加ありがとうございます！<br />
                       花資材の卸売パートナーです🌿<br />
@@ -476,7 +493,15 @@
                   </div>
 
                   <div class="row in">
-                    <div class="avatar"></div>
+                    <div class="avatar">
+                      <svg viewBox="0 0 24 24" class="person-icon" aria-hidden="true">
+                        <circle cx="12" cy="8.5" r="3.5" fill="#fff" />
+                        <path
+                          d="M5 21V20C5 16.5 8.2 14.5 12 14.5C15.8 14.5 19 16.5 19 20V21Z"
+                          fill="#fff"
+                        />
+                      </svg>
+                    </div>
                     <div class="bubble in">
                       承知しました！<br />
                       簡単に店舗のイメージや用途を<br />
@@ -491,7 +516,15 @@
                   </div>
 
                   <div class="row in">
-                    <div class="avatar"></div>
+                    <div class="avatar">
+                      <svg viewBox="0 0 24 24" class="person-icon" aria-hidden="true">
+                        <circle cx="12" cy="8.5" r="3.5" fill="#fff" />
+                        <path
+                          d="M5 21V20C5 16.5 8.2 14.5 12 14.5C15.8 14.5 19 16.5 19 20V21Z"
+                          fill="#fff"
+                        />
+                      </svg>
+                    </div>
                     <div class="bubble in">
                       承りがとうございます！<br />
                       それでは、ナチュラルな雰囲気に<br />
