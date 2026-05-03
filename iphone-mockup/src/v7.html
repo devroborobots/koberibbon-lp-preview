@@ -240,6 +240,10 @@
         border-radius: 50%;
         background: #5baa47;
         flex-shrink: 0;
+        /* bubble.in::after (chat-bg 色のしっぽ背景) が avatar の右下を
+           覆って切れて見えるのを防ぐため、stacking context を作って前面へ */
+        position: relative;
+        z-index: 1;
       }
 
       .bubble {
