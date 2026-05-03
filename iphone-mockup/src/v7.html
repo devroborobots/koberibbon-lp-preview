@@ -47,12 +47,19 @@
         transform-style: preserve-3d;
         /* Static base transform — vanilla-tilt overrides on mouse-enter */
         transform: rotateY(-12deg) rotateX(2deg) rotateZ(-2deg);
-        /* 9-layer ambient shadow stack — each step doubles blur, halves opacity */
-        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18))
-          drop-shadow(0 2px 2px rgba(0, 0, 0, 0.14)) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1))
-          drop-shadow(0 8px 8px rgba(0, 0, 0, 0.08)) drop-shadow(0 16px 16px rgba(0, 0, 0, 0.06))
-          drop-shadow(0 32px 32px rgba(0, 0, 0, 0.05)) drop-shadow(0 48px 60px rgba(0, 0, 0, 0.06))
-          drop-shadow(0 60px 80px rgba(0, 0, 0, 0.04));
+        /* squarer corners: 元 SVG は 16.9%/8.3%R → 12%/6% で角ばらせる */
+        border-radius: 12% / 6%;
+        clip-path: inset(0 round 12% / 6%);
+        /* 9-layer ambient shadow stack — box-shadow で角ばった形に追従 */
+        box-shadow:
+          0 1px 1px rgba(0, 0, 0, 0.18),
+          0 2px 2px rgba(0, 0, 0, 0.14),
+          0 4px 4px rgba(0, 0, 0, 0.1),
+          0 8px 8px rgba(0, 0, 0, 0.08),
+          0 16px 16px rgba(0, 0, 0, 0.06),
+          0 32px 32px rgba(0, 0, 0, 0.05),
+          0 48px 60px rgba(0, 0, 0, 0.06),
+          0 60px 80px rgba(0, 0, 0, 0.04);
         transition: transform 0.3s cubic-bezier(0.03, 0.98, 0.52, 0.99);
       }
       @media (prefers-reduced-motion: reduce) {
@@ -348,10 +355,24 @@
         padding: 0 10px;
         color: #aaa;
         font-size: 12px;
+        gap: 6px;
       }
-      .input-bar .field::after {
-        content: "😊";
+      .field-emoji {
+        width: 18px;
+        height: 18px;
         margin-left: auto;
+        flex-shrink: 0;
+      }
+      .status-icon {
+        width: 14px;
+        height: 14px;
+        color: #fff;
+        fill: currentColor;
+      }
+      .status-icons {
+        display: flex;
+        gap: 4px;
+        align-items: center;
       }
 
       /* === Comparison === */
@@ -408,27 +429,32 @@
                 <div class="status">
                   <span>9:41</span>
                   <span class="status-icons">
-                    <span>•••</span><span>📶</span>
+                    <svg class="status-icon" aria-label="信号">
+                      <use href="../assets/icons-DPGHdanN.svg#i-cellular" />
+                    </svg>
+                    <svg class="status-icon" aria-label="Wi-Fi">
+                      <use href="../assets/icons-DPGHdanN.svg#i-wifi" />
+                    </svg>
                     <span class="battery"></span>
                   </span>
                 </div>
                 <div class="line-header">
                   <svg class="line-icon back" aria-label="戻る">
-                    <use href="../assets/icons-CjgbW9sk.svg#i-back" />
+                    <use href="../assets/icons-DPGHdanN.svg#i-back" />
                   </svg>
                   <svg class="line-icon badge" aria-label="公式アカウント">
-                    <use href="../assets/icons-CjgbW9sk.svg#i-shield" />
+                    <use href="../assets/icons-DPGHdanN.svg#i-shield" />
                   </svg>
                   <span class="title">花資材の卸売パートナー</span>
                   <span class="icons">
                     <svg class="line-icon" aria-label="検索">
-                      <use href="../assets/icons-CjgbW9sk.svg#i-search" />
+                      <use href="../assets/icons-DPGHdanN.svg#i-search" />
                     </svg>
                     <svg class="line-icon" aria-label="電話">
-                      <use href="../assets/icons-CjgbW9sk.svg#i-phone" />
+                      <use href="../assets/icons-DPGHdanN.svg#i-phone" />
                     </svg>
                     <svg class="line-icon" aria-label="メニュー">
-                      <use href="../assets/icons-CjgbW9sk.svg#i-menu" />
+                      <use href="../assets/icons-DPGHdanN.svg#i-menu" />
                     </svg>
                   </span>
                 </div>
@@ -560,17 +586,22 @@
                 </div>
                 <div class="input-bar">
                   <svg class="bar-icon" aria-label="追加">
-                    <use href="../assets/icons-CjgbW9sk.svg#i-plus" />
+                    <use href="../assets/icons-DPGHdanN.svg#i-plus" />
                   </svg>
                   <svg class="bar-icon" aria-label="カメラ">
-                    <use href="../assets/icons-CjgbW9sk.svg#i-camera" />
+                    <use href="../assets/icons-DPGHdanN.svg#i-camera" />
                   </svg>
                   <svg class="bar-icon" aria-label="画像">
-                    <use href="../assets/icons-CjgbW9sk.svg#i-image" />
+                    <use href="../assets/icons-DPGHdanN.svg#i-image" />
                   </svg>
-                  <div class="field">Aa</div>
+                  <div class="field">
+                    <span>Aa</span>
+                    <svg class="field-emoji" aria-label="絵文字">
+                      <use href="../assets/icons-DPGHdanN.svg#i-smile" />
+                    </svg>
+                  </div>
                   <svg class="bar-icon" aria-label="マイク">
-                    <use href="../assets/icons-CjgbW9sk.svg#i-mic" />
+                    <use href="../assets/icons-DPGHdanN.svg#i-mic" />
                   </svg>
                 </div>
               </div>
