@@ -869,38 +869,56 @@ h1, h2, h3, p { margin: 0; }
 /* ============== RESPONSIVE ============== */
 @media (max-width: 720px) {
   :root { --pad-x: 18px; }
-  .site-header { padding: 12px 18px; }
-  .header-inner { flex-wrap: wrap; gap: 10px; }
-  .nav-main { gap: 12px; font-size: 10px; order: 3; width: 100%; justify-content: center; margin-left: 0; }
+
+  /* ----- HEADER ----- */
+  .site-header { padding: 10px 18px; }
+  .header-inner { flex-wrap: nowrap; gap: 10px; align-items: center; }
+  .nav-main { display: none; }
   .header-cta { margin-left: auto; }
+  .header-cta img { height: 50px; width: auto; }
+  .brand-logo { width: 56px; height: 28px; font-size: 11px; }
+  .brand-sub { font-size: 8px; }
 
+  /* ----- HERO (full SP image swap) ----- */
   .hero { padding: 0; min-height: 0; }
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { position: relative; right: 0; width: 100%; max-width: 380px; margin: 16px auto 0; height: 360px; }
-  .hero-photo { left: 8px; right: 8px; width: auto; }
-  .hero-headline { font-size: 32px; white-space: normal; }
-  .proof-row { grid-template-columns: repeat(2, 1fr); max-width: none; }
-  .decor-handwriting { display: none; }
+  .hero-full-img { width: 100%; height: auto; display: block; }
 
+  /* ----- DECORATIONS (hide side flames on SP for tightness) ----- */
+  .decor-side-pink-mid,
+  .decor-side-mint-price,
+  .decor-mint-faq,
+  .decor-handwriting { display: none; }
+  .decor-squiggle { width: 50px; bottom: 16px; right: 6px; }
+
+  /* ----- SECTIONS ----- */
   .event-section, .access-section, .strength-section, .price-section, .faq-section { padding-left: 18px; padding-right: 18px; }
   .news-section { padding-left: 18px; padding-right: 18px; }
 
-  .event-grid { grid-template-columns: repeat(2, 1fr); }
-  .access-grid { grid-template-columns: 1fr; }
+  /* EVENT */
+  .event-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+  /* NEWS */
+  .news-row { flex-wrap: wrap; gap: 6px 10px; }
+  .news-text { white-space: normal; flex: 1 1 100%; order: 3; }
+  .news-more { margin-left: auto; }
+
+  /* ACCESS */
+  .access-grid { grid-template-columns: 1fr; gap: 14px; }
+  .access-photo { width: 100%; }
+  .access-photo .parking-badge { width: 64px; height: 64px; }
+
+  /* STRENGTH (vertical separator removed on SP) */
   .strength-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .strength-card { border-left: 0 !important; padding-left: 0 !important; }
+
+  /* PRICE */
   .price-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* FAQ */
   .faq-grid { grid-template-columns: 1fr; }
   .faq-image { max-width: 280px; margin: 0 auto; }
 
-  .news-text { white-space: normal; }
-  .access-photo { width: 100%; }
-
-  .bottom-cta {
-    margin: 14px 0 22px;
-    grid-template-columns: 1fr;
-    padding: 0;
-  }
-  .cta-phone-mock {
-    margin: 0 auto -10px;
-  }
+  /* ----- BOTTOM CTA (full SP image swap) ----- */
+  .bottom-cta { margin: 14px 0 22px; padding: 0; min-height: 0; display: block; }
+  .bottom-cta-full-img { width: 100%; height: auto; display: block; }
 }
