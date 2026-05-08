@@ -402,18 +402,57 @@
       backgroundColor: '#f8f8f6'
     });
 
-    const marker = new google.maps.Marker({
+    new google.maps.Marker({
       position: c.center,
       map,
-      title: c.storeName
+      title: c.storeName,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: '#cdf000',
+        fillOpacity: 1,
+        strokeColor: '#25272d',
+        strokeWeight: 2,
+        scale: 7
+      }
     });
 
-    const labelEl = document.createElement('div');
-    labelEl.style.cssText = 'padding:4px 10px;font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:13px;color:#25272d;white-space:nowrap;';
-    labelEl.textContent = '神戸リボン';
-    const info = new google.maps.InfoWindow({ content: labelEl, disableAutoPan: false });
-    info.open({ anchor: marker, map });
-    marker.addListener('click', () => info.open({ anchor: marker, map }));
+    class StoreLabel extends google.maps.OverlayView {
+      constructor(position, name, icon) {
+        super();
+        this.position = position;
+        this.name = name;
+        this.icon = icon;
+        this.div = null;
+      }
+      onAdd() {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'position:absolute;background:#ffffff;padding:6px 12px 6px 10px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,0.18);font-family:"Noto Sans JP","Yu Gothic",sans-serif;font-weight:700;font-size:13px;color:#25272d;white-space:nowrap;display:flex;align-items:center;gap:5px;border:2px solid #cdf000;transform:translate(-50%,-150%);pointer-events:none;';
+        const ico = document.createElement('span');
+        ico.textContent = this.icon;
+        ico.style.cssText = 'font-size:14px;line-height:1;';
+        const txt = document.createElement('span');
+        txt.textContent = this.name;
+        wrap.appendChild(ico);
+        wrap.appendChild(txt);
+        this.div = wrap;
+        this.getPanes().floatPane.appendChild(wrap);
+      }
+      draw() {
+        const proj = this.getProjection();
+        if (!proj || !this.div) return;
+        const px = proj.fromLatLngToDivPixel(this.position);
+        if (!px) return;
+        this.div.style.left = px.x + 'px';
+        this.div.style.top = px.y + 'px';
+      }
+      onRemove() {
+        if (this.div && this.div.parentNode) this.div.parentNode.removeChild(this.div);
+        this.div = null;
+      }
+    }
+
+    const label = new StoreLabel(new google.maps.LatLng(c.center.lat, c.center.lng), '神戸リボン', '🌷');
+    label.setMap(map);
   }
 
   (function loadGoogleMaps() {
