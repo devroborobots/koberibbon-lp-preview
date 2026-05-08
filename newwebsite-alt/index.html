@@ -402,11 +402,18 @@
       backgroundColor: '#f8f8f6'
     });
 
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: c.center,
       map,
       title: c.storeName
     });
+
+    const labelEl = document.createElement('div');
+    labelEl.style.cssText = 'padding:4px 10px;font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:13px;color:#25272d;white-space:nowrap;';
+    labelEl.textContent = '神戸リボン';
+    const info = new google.maps.InfoWindow({ content: labelEl, disableAutoPan: false });
+    info.open({ anchor: marker, map });
+    marker.addListener('click', () => info.open({ anchor: marker, map }));
   }
 
   (function loadGoogleMaps() {
