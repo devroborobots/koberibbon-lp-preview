@@ -402,57 +402,19 @@
       backgroundColor: '#f8f8f6'
     });
 
+    const pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="130" height="58" viewBox="0 0 130 58"><path d="M 18,4 L 112,4 Q 126,4 126,18 L 126,32 Q 126,46 112,46 L 70,46 L 65,56 L 60,46 L 18,46 Q 4,46 4,32 L 4,18 Q 4,4 18,4 Z" fill="#ffffff" stroke="#cdf000" stroke-width="2.5"/><text x="65" y="30" text-anchor="middle" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-weight="700" font-size="13.5" fill="#25272d">神戸リボン</text></svg>';
+
     new google.maps.Marker({
       position: c.center,
       map,
       title: c.storeName,
       icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        fillColor: '#cdf000',
-        fillOpacity: 1,
-        strokeColor: '#25272d',
-        strokeWeight: 2,
-        scale: 7
+        url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinSvg),
+        size: new google.maps.Size(130, 58),
+        scaledSize: new google.maps.Size(130, 58),
+        anchor: new google.maps.Point(65, 56)
       }
     });
-
-    class StoreLabel extends google.maps.OverlayView {
-      constructor(position, name, icon) {
-        super();
-        this.position = position;
-        this.name = name;
-        this.icon = icon;
-        this.div = null;
-      }
-      onAdd() {
-        const wrap = document.createElement('div');
-        wrap.style.cssText = 'position:absolute;background:#ffffff;padding:6px 12px 6px 10px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,0.18);font-family:"Noto Sans JP","Yu Gothic",sans-serif;font-weight:700;font-size:13px;color:#25272d;white-space:nowrap;display:flex;align-items:center;gap:5px;border:2px solid #cdf000;transform:translate(-50%,-150%);pointer-events:none;';
-        const ico = document.createElement('span');
-        ico.textContent = this.icon;
-        ico.style.cssText = 'font-size:14px;line-height:1;';
-        const txt = document.createElement('span');
-        txt.textContent = this.name;
-        wrap.appendChild(ico);
-        wrap.appendChild(txt);
-        this.div = wrap;
-        this.getPanes().floatPane.appendChild(wrap);
-      }
-      draw() {
-        const proj = this.getProjection();
-        if (!proj || !this.div) return;
-        const px = proj.fromLatLngToDivPixel(this.position);
-        if (!px) return;
-        this.div.style.left = px.x + 'px';
-        this.div.style.top = px.y + 'px';
-      }
-      onRemove() {
-        if (this.div && this.div.parentNode) this.div.parentNode.removeChild(this.div);
-        this.div = null;
-      }
-    }
-
-    const label = new StoreLabel(new google.maps.LatLng(c.center.lat, c.center.lng), '神戸リボン', '🌷');
-    label.setMap(map);
   }
 
   (function loadGoogleMaps() {
