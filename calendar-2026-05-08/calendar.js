@@ -208,7 +208,12 @@
         td.appendChild(span('status', '営業日'));
         var hours = HOURS_BY_WEEKDAY[dow];
         if (hours) {
-          td.appendChild(span('hours', hours));
+          var parts = hours.split('–');
+          var hoursEl = document.createElement('span');
+          hoursEl.className = 'hours';
+          hoursEl.appendChild(span('h-open', parts[0] + '–'));
+          if (parts[1]) hoursEl.appendChild(span('h-close', parts[1]));
+          td.appendChild(hoursEl);
         }
       }
     }

@@ -255,8 +255,10 @@ body {
   font-weight: 700;
   color: var(--black);
   letter-spacing: 0.02em;
-  padding-left: 1em;
-  text-indent: -1em;
+}
+.cal-grid td .hours .h-open,
+.cal-grid td .hours .h-close {
+  display: inline;
 }
 .cal-grid td .note {
   position: absolute;
@@ -377,8 +379,13 @@ body {
     font-size: 9px;
     margin-top: 3px;
     letter-spacing: 0;
+  }
+  .cal-grid td .hours .h-open,
+  .cal-grid td .hours .h-close {
+    display: block;
+  }
+  .cal-grid td .hours .h-close {
     padding-left: 1.8em;
-    text-indent: -1.8em;
   }
   .cal-grid td .note {
     font-size: 8.5px;
@@ -460,7 +467,7 @@ body {
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.5.0/ical.min.js"></script>
-<script src="calendar.js?v=2"></script>
+<script src="calendar.js?v=3"></script>
 
 </body>
 </html>
