@@ -325,47 +325,14 @@
     storeAddress: '〒538-0031 大阪府大阪市鶴見区茨田大宮2-7-70 大阪鶴見花き卸売市場 2階',
     storeUrl: 'https://maps.app.goo.gl/bMfdX8VQT1GLRfat9',
     style: [
-      { elementType: 'geometry', stylers: [{ color: '#f8f8f6' }] },
-      { elementType: 'labels.text.fill', stylers: [{ color: '#6d7370' }] },
-      { elementType: 'labels.text.stroke', stylers: [{ color: '#ffffff' }, { weight: 2 }] },
-      { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#dfe5e2' }] },
-      { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-      { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#f5f9d8' }, { visibility: 'on' }] },
-      { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
-      { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#e8e8e3' }] },
-      { featureType: 'road.arterial', elementType: 'labels.text.fill', stylers: [{ color: '#7a7a7a' }] },
-      { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#fff5f8' }] },
-      { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#ffd1dc' }] },
-      { featureType: 'road.local', elementType: 'labels', stylers: [{ visibility: 'simplified' }] },
-      { featureType: 'transit', elementType: 'labels.icon', stylers: [{ saturation: -50 }, { lightness: 20 }] },
-      { featureType: 'transit.line', elementType: 'geometry', stylers: [{ color: '#cdf000' }, { lightness: 30 }] },
-      { featureType: 'transit.station', elementType: 'labels.text.fill', stylers: [{ color: '#7b4cff' }] },
-      { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#e8f5f1' }] },
-      { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#7ea99c' }] }
+      { featureType: 'landscape', stylers: [{ hue: '#a4edff' }, { saturation: 34.48275862068968 }, { lightness: -1.490196078431353 }, { gamma: 1 }] },
+      { featureType: 'road.highway', stylers: [{ hue: '#f7b694' }, { saturation: -2.970297029703005 }, { lightness: -17.815686274509815 }, { gamma: 1 }] },
+      { featureType: 'road.arterial', stylers: [{ hue: '#FFE100' }, { saturation: 8.600000000000009 }, { lightness: -4.400000000000006 }, { gamma: 1 }] },
+      { featureType: 'road.local', stylers: [{ hue: '#00C3FF' }, { saturation: 29.31034482758622 }, { lightness: -38.980392156862735 }, { gamma: 1 }] },
+      { featureType: 'water', stylers: [{ hue: '#0078FF' }, { saturation: 0 }, { lightness: 0 }, { gamma: 1 }] },
+      { featureType: 'poi', stylers: [{ hue: '#00FF19' }, { saturation: -30.526315789473685 }, { lightness: -22.509803921568633 }, { gamma: 1 }] }
     ]
   };
-
-  function buildInfoWindowContent() {
-    const c = window.KR_MAP_CONFIG;
-    const wrap = document.createElement('div');
-    wrap.style.cssText = 'font-family:"Noto Sans JP",sans-serif;color:#25272d;font-size:12px;line-height:1.55;max-width:220px;';
-    const title = document.createElement('div');
-    title.style.cssText = 'font-weight:700;font-size:13px;margin-bottom:4px;';
-    title.textContent = c.storeName;
-    const addr = document.createElement('div');
-    addr.style.cssText = 'color:#6d7370;margin-bottom:6px;';
-    addr.textContent = c.storeAddress;
-    const link = document.createElement('a');
-    link.href = c.storeUrl;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.style.cssText = 'display:inline-block;background:#cdf000;color:#25272d;padding:4px 12px;border-radius:999px;font-weight:700;text-decoration:none;font-size:11px;';
-    link.textContent = 'Googleマップで開く →';
-    wrap.appendChild(title);
-    wrap.appendChild(addr);
-    wrap.appendChild(link);
-    return wrap;
-  }
 
   function buildPlaceholderContent() {
     const c = window.KR_MAP_CONFIG;
@@ -403,28 +370,11 @@
       backgroundColor: '#f8f8f6'
     });
 
-    const markerSvg = {
-      path: 'M0,-32 C-9,-32 -16,-25 -16,-16 C-16,-6 0,8 0,8 C0,8 16,-6 16,-16 C16,-25 9,-32 0,-32 Z',
-      fillColor: '#cdf000',
-      fillOpacity: 1,
-      strokeColor: '#25272d',
-      strokeWeight: 2,
-      scale: 1,
-      anchor: new google.maps.Point(0, 8),
-      labelOrigin: new google.maps.Point(0, -18)
-    };
-
-    const marker = new google.maps.Marker({
+    new google.maps.Marker({
       position: c.center,
       map,
-      title: c.storeName,
-      icon: markerSvg,
-      label: { text: '🌷', fontSize: '14px', color: '#25272d' }
+      title: c.storeName
     });
-
-    const info = new google.maps.InfoWindow({ content: buildInfoWindowContent() });
-    marker.addListener('click', () => info.open({ anchor: marker, map }));
-    setTimeout(() => info.open({ anchor: marker, map }), 600);
   }
 
   (function loadGoogleMaps() {
