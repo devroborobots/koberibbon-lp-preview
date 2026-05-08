@@ -203,8 +203,7 @@
 
     if (!isOut) {
       if (closedReason) {
-        td.appendChild(span('status', '休業日'));
-        td.appendChild(span('note', closedReason));
+        td.appendChild(span('status', closedReason));
       } else {
         td.appendChild(span('status', '営業日'));
         var hours = HOURS_BY_WEEKDAY[dow];
