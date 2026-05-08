@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Map Style Compare — 神戸リボン</title>
+<style>
+  body { font-family: "Noto Sans JP", sans-serif; background: #f8f8f6; margin: 20px; color: #25272d; }
+  h1 { font-size: 18px; margin: 0 0 6px; }
+  .lead { font-size: 12px; color: #6d7370; margin: 0 0 18px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 1200px; }
+  .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; }
+  .card h2 { font-size: 14px; margin: 0; padding: 10px 14px; background: #fafafa; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+  .card h2 small { font-weight: 400; color: #6d7370; font-size: 11px; }
+  .map { width: 100%; aspect-ratio: 1.4 / 1; background: #f0f0f0; }
+  .badge { background: #cdf000; color: #25272d; padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<h1>Google Maps スタイル比較 — 神戸リボン店舗</h1>
+<p class="lead">座標 34.7122337, 135.5928885 / zoom 16 / すべて同条件で表示</p>
+
+<div class="grid">
+  <div class="card"><h2>1. Chundo Style <small>現在採用中 <span class="badge">CURRENT</span></small></h2><div class="map" id="map-chundo"></div></div>
+  <div class="card"><h2>2. Subtle Grayscale <small>モノクロ／ミニマル</small></h2><div class="map" id="map-grayscale"></div></div>
+  <div class="card"><h2>3. Pale Dawn <small>クリーム系・温かみ</small></h2><div class="map" id="map-pale-dawn"></div></div>
+  <div class="card"><h2>4. Avocado World <small>緑系・ブランド lime と相性</small></h2><div class="map" id="map-avocado"></div></div>
+  <div class="card"><h2>5. Ultra Light with Labels <small>超薄色・最も目立たない</small></h2><div class="map" id="map-ultra-light"></div></div>
+  <div class="card"><h2>6. Default <small>素のまま（参考）</small></h2><div class="map" id="map-default"></div></div>
+</div>
+
+<script>
+  const STYLES = {
+    chundo: [{"featureType":"landscape","stylers":[{"hue":"#a4edff"},{"saturation":34.48275862068968},{"lightness":-1.490196078431353},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#f7b694"},{"saturation":-2.970297029703005},{"lightness":-17.815686274509815},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FFE100"},{"saturation":8.600000000000009},{"lightness":-4.400000000000006},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#00C3FF"},{"saturation":29.31034482758622},{"lightness":-38.980392156862735},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":0},{"lightness":0},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF19"},{"saturation":-30.526315789473685},{"lightness":-22.509803921568633},{"gamma":1}]}],
+    grayscale: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}],
+    paleDawn: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}],
+    avocado: [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#abbaa4"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]},{"featureType":"road.highway","stylers":[{"color":"#ad9b8d"}]}],
+    ultraLight: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}],
+    none: []
+  };
+
+  const CENTER = { lat: 34.7122337, lng: 135.5928885 };
+
+  function makeMap(id, styles) {
+    const m = new google.maps.Map(document.getElementById(id), {
+      center: CENTER, zoom: 16, styles,
+      disableDefaultUI: true, gestureHandling: 'cooperative',
+      backgroundColor: '#f0f0f0'
+    });
+    new google.maps.Marker({ position: CENTER, map: m });
+  }
+
+  function initCompare() {
+    makeMap('map-chundo', STYLES.chundo);
+    makeMap('map-grayscale', STYLES.grayscale);
+    makeMap('map-pale-dawn', STYLES.paleDawn);
+    makeMap('map-avocado', STYLES.avocado);
+    makeMap('map-ultra-light', STYLES.ultraLight);
+    makeMap('map-default', STYLES.none);
+  }
+
+  (function() {
+    fetch('index.html').then(r => r.text()).then(html => {
+      const m = html.match(/window\.KR_GOOGLE_MAPS_API_KEY\s*=\s*'([^']+)'/);
+      if (!m) {
+        const p = document.createElement('p');
+        p.style.color = '#c00';
+        p.textContent = 'API key not found in index.html';
+        document.body.insertBefore(p, document.body.firstChild);
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(m[1]) + '&callback=initCompare&loading=async&v=weekly';
+      s.async = true; s.defer = true;
+      document.head.appendChild(s);
+    });
+  })();
+</script>
+
+</body>
+</html>
