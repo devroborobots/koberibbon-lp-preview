@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Marker Compare — 神戸リボン（建物アイコン）</title>
+<title>Marker Compare — 神戸リボン（既存 icon_store.svg 色変え）</title>
 <style>
   body { font-family: "Noto Sans JP", "Yu Gothic", sans-serif; background: #f8f8f6; margin: 20px; color: #25272d; }
   h1 { font-size: 18px; margin: 0 0 6px; }
@@ -17,21 +17,21 @@
 </head>
 <body>
 
-<h1>建物アイコン付きマーカー比較 — 神戸リボン店舗</h1>
-<p class="lead">案 C'（ピル + 「神戸リボン」テキスト）+ 下部に建物アイコン。座標 34.7122337, 135.5928885 / zoom 16 / X Spot Location スタイル</p>
+<h1>マーカー比較 — 既存 icon_store.svg を色変えして再利用</h1>
+<p class="lead">既存アセット <code>design/assets/svg-parts/icons/icon_store.svg</code> をベースに、色のアクセントを 3 パターン。座標 34.7122337, 135.5928885 / X Spot Location スタイル</p>
 
 <div class="grid">
   <div class="card">
-    <h2>案 1：ストアフロント <small>オーニング（日除け）付きの商店ファサード</small></h2>
-    <div class="map" id="map-storefront"></div>
+    <h2>案 1：黒線のみ（オリジナル） <small>装飾なし、最もミニマル</small></h2>
+    <div class="map" id="map-plain"></div>
   </div>
   <div class="card">
-    <h2>案 2：シンプル家形 <small>三角屋根 + 本体 + ドアの最小構成</small></h2>
-    <div class="map" id="map-house"></div>
+    <h2>案 2：黒線 + lime ドア <small>入口を lime で塗りつぶしてアクセント</small></h2>
+    <div class="map" id="map-door"></div>
   </div>
   <div class="card">
-    <h2>案 3：2F 建物 <small>2 階建てビル（実際の所在地：花き卸売市場 2F に対応）</small></h2>
-    <div class="map" id="map-2f"></div>
+    <h2>案 3：黒線 + lime 看板枠 <small>右側の小窓を看板風に lime 塗り</small></h2>
+    <div class="map" id="map-window"></div>
   </div>
 </div>
 
@@ -40,35 +40,40 @@
 
   const CENTER = { lat: 34.7122337, lng: 135.5928885 };
 
-  const PILL = '<rect x="4" y="4" width="122" height="42" rx="21" fill="#ffffff" stroke="#cdf000" stroke-width="2.5"/><text x="65" y="30" text-anchor="middle" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-weight="700" font-size="13.5" fill="#25272d">神戸リボン</text>';
+  // ピル部分（共通）— C' から流用
+  const PILL = '<rect x="9" y="4" width="122" height="42" rx="21" fill="#ffffff" stroke="#cdf000" stroke-width="2.5"/><text x="70" y="30" text-anchor="middle" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-weight="700" font-size="13.5" fill="#25272d">神戸リボン</text>';
 
-  // 案 1: ストアフロント（オーニング付き）
-  const SVG_STOREFRONT = '<svg xmlns="http://www.w3.org/2000/svg" width="130" height="115" viewBox="0 0 130 115">' + PILL +
-    '<path d="M 44,68 L 86,68 L 82,58 L 48,58 Z" fill="#cdf000" stroke="#25272d" stroke-width="2" stroke-linejoin="round"/>' +
-    '<line x1="55" y1="58" x2="55" y2="68" stroke="#25272d" stroke-width="1"/>' +
-    '<line x1="65" y1="58" x2="65" y2="68" stroke="#25272d" stroke-width="1"/>' +
-    '<line x1="75" y1="58" x2="75" y2="68" stroke="#25272d" stroke-width="1"/>' +
-    '<rect x="48" y="68" width="34" height="42" fill="#ffffff" stroke="#25272d" stroke-width="2"/>' +
-    '<rect x="60" y="88" width="10" height="22" fill="#25272d"/>' +
-    '</svg>';
+  // icon_store.svg のパスを再利用、底辺中央が anchor になるよう配置（46+8=54 から 64x64 配置）
+  // 全体寸法: 140 × 122  /  ピル: 130×46（x 5-135）  /  アイコン: 64×64（中央 x 38-102, y 54-118）
+  const SVG_PLAIN = '<svg xmlns="http://www.w3.org/2000/svg" width="140" height="122" viewBox="0 0 140 122">' +
+    PILL +
+    '<g transform="translate(38 54)" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">' +
+    '<path d="M11 28 32 12l21 16"/>' +
+    '<path d="M16 27v24h32V27"/>' +
+    '<path d="M25 51V36h14v15"/>' +
+    '<path d="M21 25v-8h8"/>' +
+    '<path d="M43 31h-8v8h8z"/>' +
+    '</g></svg>';
 
-  // 案 2: シンプル家形
-  const SVG_HOUSE = '<svg xmlns="http://www.w3.org/2000/svg" width="130" height="115" viewBox="0 0 130 115">' + PILL +
-    '<polygon points="44,68 86,68 65,52" fill="#cdf000" stroke="#25272d" stroke-width="2" stroke-linejoin="round"/>' +
-    '<rect x="48" y="68" width="34" height="42" fill="#ffffff" stroke="#25272d" stroke-width="2"/>' +
-    '<rect x="60" y="86" width="10" height="24" fill="#25272d"/>' +
-    '</svg>';
+  const SVG_DOOR = '<svg xmlns="http://www.w3.org/2000/svg" width="140" height="122" viewBox="0 0 140 122">' +
+    PILL +
+    '<g transform="translate(38 54)" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">' +
+    '<path d="M11 28 32 12l21 16"/>' +
+    '<path d="M16 27v24h32V27"/>' +
+    '<path fill="#cdf000" d="M25 51V36h14v15"/>' +
+    '<path d="M21 25v-8h8"/>' +
+    '<path d="M43 31h-8v8h8z"/>' +
+    '</g></svg>';
 
-  // 案 3: 2F 建物
-  const SVG_2F = '<svg xmlns="http://www.w3.org/2000/svg" width="130" height="115" viewBox="0 0 130 115">' + PILL +
-    '<rect x="44" y="56" width="42" height="54" fill="#ffffff" stroke="#25272d" stroke-width="2"/>' +
-    '<line x1="44" y1="83" x2="86" y2="83" stroke="#25272d" stroke-width="1.5"/>' +
-    '<rect x="50" y="62" width="10" height="13" fill="#cdf000" stroke="#25272d" stroke-width="1.2"/>' +
-    '<rect x="70" y="62" width="10" height="13" fill="#cdf000" stroke="#25272d" stroke-width="1.2"/>' +
-    '<rect x="50" y="89" width="9" height="11" fill="#cdf000" stroke="#25272d" stroke-width="1.2"/>' +
-    '<rect x="71" y="89" width="9" height="11" fill="#cdf000" stroke="#25272d" stroke-width="1.2"/>' +
-    '<rect x="61" y="92" width="8" height="18" fill="#25272d"/>' +
-    '</svg>';
+  const SVG_WINDOW = '<svg xmlns="http://www.w3.org/2000/svg" width="140" height="122" viewBox="0 0 140 122">' +
+    PILL +
+    '<g transform="translate(38 54)" stroke="#25272d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">' +
+    '<path d="M11 28 32 12l21 16"/>' +
+    '<path d="M16 27v24h32V27"/>' +
+    '<path d="M25 51V36h14v15"/>' +
+    '<path d="M21 25v-8h8"/>' +
+    '<path fill="#cdf000" d="M43 31h-8v8h8z"/>' +
+    '</g></svg>';
 
   function svgDataUrl(svg) {
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
@@ -85,18 +90,18 @@
       map: map,
       icon: {
         url: svgDataUrl(svg),
-        size: new google.maps.Size(130, 115),
-        scaledSize: new google.maps.Size(130, 115),
-        anchor: new google.maps.Point(65, 110)
+        size: new google.maps.Size(140, 122),
+        scaledSize: new google.maps.Size(140, 122),
+        anchor: new google.maps.Point(70, 118)
       },
       title: '神戸リボン'
     });
   }
 
   function initCompare() {
-    makeMap('map-storefront', SVG_STOREFRONT);
-    makeMap('map-house', SVG_HOUSE);
-    makeMap('map-2f', SVG_2F);
+    makeMap('map-plain', SVG_PLAIN);
+    makeMap('map-door', SVG_DOOR);
+    makeMap('map-window', SVG_WINDOW);
   }
 
   (function() {
