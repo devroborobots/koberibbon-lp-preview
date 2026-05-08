@@ -201,7 +201,7 @@
       td.appendChild(span('day-tag', 'TODAY'));
     }
 
-    if (!isOut) {
+    if (!isOut && state.icsLoaded) {
       if (closedReason) {
         td.appendChild(span('status', closedReason));
       } else {
@@ -266,6 +266,7 @@
       .then(function (events) {
         state.rawEvents = events;
         state.closedMap = buildClosedMap(events, state.viewYear, state.viewMonth);
+        state.icsLoaded = true;
         render();
       })
       .catch(function (err) {
