@@ -402,7 +402,16 @@
       backgroundColor: '#f8f8f6'
     });
 
-    const pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="130" height="58" viewBox="0 0 130 58"><path d="M 18,4 L 112,4 Q 126,4 126,18 L 126,32 Q 126,46 112,46 L 70,46 L 65,56 L 60,46 L 18,46 Q 4,46 4,32 L 4,18 Q 4,4 18,4 Z" fill="#ffffff" stroke="#cdf000" stroke-width="2.5"/><text x="65" y="30" text-anchor="middle" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-weight="700" font-size="13.5" fill="#25272d">神戸リボン</text></svg>';
+    const pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="140" height="100" viewBox="0 0 140 100">' +
+      '<path d="M 25 4 H 115 A 21 21 0 0 1 136 25 A 21 21 0 0 1 115 46 H 46 L 38 58 L 32 46 H 25 A 21 21 0 0 1 4 25 A 21 21 0 0 1 25 4 Z" fill="#ffffff" stroke="#cdf000" stroke-width="2.5" stroke-linejoin="round"/>' +
+      '<text x="70" y="30" text-anchor="middle" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-weight="700" font-size="13.5" fill="#25272d">神戸リボン</text>' +
+      '<g transform="translate(16 58) scale(0.7)" stroke="#25272d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">' +
+      '<path d="M11 28 32 12l21 16"/>' +
+      '<path d="M16 27v24h32V27"/>' +
+      '<path fill="#cdf000" d="M25 51V36h14v15"/>' +
+      '<path d="M21 25v-8h8"/>' +
+      '<path d="M43 31h-8v8h8z"/>' +
+      '</g></svg>';
 
     new google.maps.Marker({
       position: c.center,
@@ -410,9 +419,9 @@
       title: c.storeName,
       icon: {
         url: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pinSvg),
-        size: new google.maps.Size(130, 58),
-        scaledSize: new google.maps.Size(130, 58),
-        anchor: new google.maps.Point(65, 56)
+        size: new google.maps.Size(140, 100),
+        scaledSize: new google.maps.Size(140, 100),
+        anchor: new google.maps.Point(38, 94)
       }
     });
   }
