@@ -133,8 +133,9 @@
     <ul class="hours-summary" aria-label="基本の営業時間">
       <li><span class="hs-dow">月・金</span><span class="hs-time">5:15–15:00</span></li>
       <li><span class="hs-dow">火・水・土</span><span class="hs-time">6:00–15:00</span></li>
-      <li><span class="hs-dow">日・木</span><span class="hs-time">定休日</span></li>
+      <li><span class="hs-dow">日・木</span><span class="hs-time hs-time-closed">定休日</span></li>
     </ul>
+    <p class="hours-note">※ 祝祭日も基本的に営業しております（特別に休業する場合のみ上記カレンダーに反映されます）。</p>
 
     <div class="cal-head">
       <div class="cal-month-nav" aria-label="月切替">
@@ -145,11 +146,6 @@
           <span class="year" id="cal-year">2026</span>
         </div>
         <button class="cal-nav-btn" id="cal-next" aria-label="次の月">›</button>
-      </div>
-      <div class="cal-legend" aria-label="凡例">
-        <span class="lg"><span class="swatch"></span>営業日</span>
-        <span class="lg"><span class="swatch closed"></span>休業日</span>
-        <span class="lg"><span class="swatch today"></span>本日</span>
       </div>
     </div>
 
