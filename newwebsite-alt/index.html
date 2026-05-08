@@ -165,7 +165,10 @@
       </div>
 
       <div class="access-map">
-        <img src="assets/gptimage2/access-map-style.png" alt="アクセスマップ">
+        <div id="kobe-ribbon-map" role="img" aria-label="神戸リボン店舗の地図（大阪鶴見花き卸売市場 2階）"></div>
+        <a class="access-map-fallback" href="https://maps.app.goo.gl/bMfdX8VQT1GLRfat9" target="_blank" rel="noopener">
+          Googleマップで開く
+        </a>
       </div>
 
       <div class="access-route">
@@ -312,6 +315,133 @@
   </section>
 
 </div>
+
+<script>
+  window.KR_MAP_CONFIG = {
+    center: { lat: 34.7122337, lng: 135.5928885 },
+    zoom: 16,
+    storeName: '有限会社 神戸リボン',
+    storeAddress: '〒538-0031 大阪府大阪市鶴見区茨田大宮2-7-70 大阪鶴見花き卸売市場 2階',
+    storeUrl: 'https://maps.app.goo.gl/bMfdX8VQT1GLRfat9',
+    style: [
+      { elementType: 'geometry', stylers: [{ color: '#f8f8f6' }] },
+      { elementType: 'labels.text.fill', stylers: [{ color: '#6d7370' }] },
+      { elementType: 'labels.text.stroke', stylers: [{ color: '#ffffff' }, { weight: 2 }] },
+      { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#dfe5e2' }] },
+      { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+      { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#f5f9d8' }, { visibility: 'on' }] },
+      { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
+      { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#e8e8e3' }] },
+      { featureType: 'road.arterial', elementType: 'labels.text.fill', stylers: [{ color: '#7a7a7a' }] },
+      { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#fff5f8' }] },
+      { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#ffd1dc' }] },
+      { featureType: 'road.local', elementType: 'labels', stylers: [{ visibility: 'simplified' }] },
+      { featureType: 'transit', elementType: 'labels.icon', stylers: [{ saturation: -50 }, { lightness: 20 }] },
+      { featureType: 'transit.line', elementType: 'geometry', stylers: [{ color: '#cdf000' }, { lightness: 30 }] },
+      { featureType: 'transit.station', elementType: 'labels.text.fill', stylers: [{ color: '#7b4cff' }] },
+      { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#e8f5f1' }] },
+      { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#7ea99c' }] }
+    ]
+  };
+
+  function buildInfoWindowContent() {
+    const c = window.KR_MAP_CONFIG;
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'font-family:"Noto Sans JP",sans-serif;color:#25272d;font-size:12px;line-height:1.55;max-width:220px;';
+    const title = document.createElement('div');
+    title.style.cssText = 'font-weight:700;font-size:13px;margin-bottom:4px;';
+    title.textContent = c.storeName;
+    const addr = document.createElement('div');
+    addr.style.cssText = 'color:#6d7370;margin-bottom:6px;';
+    addr.textContent = c.storeAddress;
+    const link = document.createElement('a');
+    link.href = c.storeUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.style.cssText = 'display:inline-block;background:#cdf000;color:#25272d;padding:4px 12px;border-radius:999px;font-weight:700;text-decoration:none;font-size:11px;';
+    link.textContent = 'Googleマップで開く →';
+    wrap.appendChild(title);
+    wrap.appendChild(addr);
+    wrap.appendChild(link);
+    return wrap;
+  }
+
+  function buildPlaceholderContent() {
+    const c = window.KR_MAP_CONFIG;
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;background:#f8f8f6;color:#6d7370;font-size:11px;line-height:1.6;';
+    const head = document.createElement('div');
+    head.style.cssText = 'font-weight:700;color:#25272d;margin-bottom:6px;';
+    head.textContent = 'Googleマップ表示用 API キー未設定';
+    const body = document.createElement('div');
+    body.textContent = 'デプロイ前に window.KR_GOOGLE_MAPS_API_KEY を設定してください。';
+    const link = document.createElement('a');
+    link.href = c.storeUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.style.cssText = 'margin-top:10px;background:#cdf000;color:#25272d;padding:6px 14px;border-radius:999px;font-weight:700;text-decoration:none;';
+    link.textContent = 'Googleマップで開く →';
+    wrap.appendChild(head);
+    wrap.appendChild(body);
+    wrap.appendChild(link);
+    return wrap;
+  }
+
+  function initKobeRibbonMap() {
+    const c = window.KR_MAP_CONFIG;
+    const map = new google.maps.Map(document.getElementById('kobe-ribbon-map'), {
+      center: c.center,
+      zoom: c.zoom,
+      styles: c.style,
+      disableDefaultUI: false,
+      zoomControl: true,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      gestureHandling: 'cooperative',
+      backgroundColor: '#f8f8f6'
+    });
+
+    const markerSvg = {
+      path: 'M0,-32 C-9,-32 -16,-25 -16,-16 C-16,-6 0,8 0,8 C0,8 16,-6 16,-16 C16,-25 9,-32 0,-32 Z',
+      fillColor: '#cdf000',
+      fillOpacity: 1,
+      strokeColor: '#25272d',
+      strokeWeight: 2,
+      scale: 1,
+      anchor: new google.maps.Point(0, 8),
+      labelOrigin: new google.maps.Point(0, -18)
+    };
+
+    const marker = new google.maps.Marker({
+      position: c.center,
+      map,
+      title: c.storeName,
+      icon: markerSvg,
+      label: { text: '🌷', fontSize: '14px', color: '#25272d' }
+    });
+
+    const info = new google.maps.InfoWindow({ content: buildInfoWindowContent() });
+    marker.addListener('click', () => info.open({ anchor: marker, map }));
+    setTimeout(() => info.open({ anchor: marker, map }), 600);
+  }
+
+  (function loadGoogleMaps() {
+    const apiKey = window.KR_GOOGLE_MAPS_API_KEY || 'YOUR_GOOGLE_MAPS_API_KEY';
+    if (!apiKey || apiKey === 'YOUR_GOOGLE_MAPS_API_KEY') {
+      const el = document.getElementById('kobe-ribbon-map');
+      if (el) {
+        el.replaceChildren(buildPlaceholderContent());
+      }
+      return;
+    }
+    const s = document.createElement('script');
+    s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(apiKey) + '&callback=initKobeRibbonMap&loading=async&v=weekly';
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+  })();
+</script>
 
 </body>
 </html>
