@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神戸リボン｜営業日カレンダー モック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #111111;
+  --muted: #6d7370;
+  --lime: #cdf000;
+  --mint: #7edec6;
+  --pink: #ff6f9e;
+  --pink-soft: #ffeaf1;
+  --purple: #7b4cff;
+  --border: #dfe5e2;
+  --panel: #fbfbfb;
+
+  --sun: #d94a6e;
+  --sat: #4a7bd9;
+
+  --font-ja: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-latin: "Montserrat", "Inter", Arial, sans-serif;
+
+  --page-w: 864px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-ja);
+  color: var(--black);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+.page {
+  width: 100%;
+  max-width: var(--page-w);
+  margin: 0 auto;
+  padding: 28px 28px 48px;
+  background: #fff;
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.section-en {
+  font-family: var(--font-latin);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 24px;
+}
+.section-ja {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+/* ============== CALENDAR ============== */
+.cal-section {
+  position: relative;
+  padding: 18px 0 0;
+}
+
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cal-month-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-latin);
+}
+.cal-month-nav .month-num {
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--black);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.cal-month-nav .month-en {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.18em;
+  margin-bottom: 2px;
+}
+.cal-month-nav .year {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+.cal-month-nav .month-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+  gap: 4px;
+}
+.cal-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--black);
+  font-size: 14px;
+  transition: background .15s, border-color .15s;
+}
+.cal-nav-btn:hover { background: var(--lime); border-color: var(--lime); }
+
+.cal-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 11px;
+  color: #2a2a2a;
+}
+.cal-legend .lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cal-legend .swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.cal-legend .swatch.closed {
+  background: var(--pink);
+  border-color: var(--pink);
+}
+.cal-legend .swatch.today {
+  background: #fff;
+  border: 2px solid var(--lime);
+  box-shadow: 0 0 0 1px #fff inset;
+}
+
+/* ----- loading status ----- */
+.cal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.cal-status[hidden] { display: none; }
+.cal-status .spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #d8dcd8;
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: cal-spin 0.7s linear infinite;
+}
+@keyframes cal-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ----- grid ----- */
+.cal-grid {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cal-grid thead th {
+  font-family: var(--font-latin);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  padding: 10px 0;
+  background: #faf9f6;
+  color: var(--black);
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+}
+.cal-grid thead th .ja {
+  display: block;
+  font-family: var(--font-ja);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+}
+.cal-grid thead th.dow-sun { color: var(--sun); }
+.cal-grid thead th.dow-sat { color: var(--sat); }
+
+.cal-grid td {
+  border: 1px solid var(--border);
+  vertical-align: top;
+  height: 104px;
+  padding: 8px 9px;
+  position: relative;
+  background: #fff;
+}
+
+.cal-grid td .day {
+  font-family: var(--font-latin);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  display: inline-block;
+}
+
+.cal-grid td .status {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  background: #eaf7f1;
+  color: #1a8567;
+  border: 1px solid #c8ead9;
+}
+.cal-grid td .hours {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--font-latin);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: 0.02em;
+}
+.cal-grid td .note {
+  position: absolute;
+  bottom: 8px;
+  left: 9px;
+  right: 9px;
+  font-size: 9.5px;
+  color: var(--muted);
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+/* sun / sat tinting on dates */
+.cal-grid td.is-sun .day { color: var(--sun); }
+.cal-grid td.is-sat .day { color: var(--sat); }
+
+/* out-of-month */
+.cal-grid td.is-out { background: #fafafa; }
+.cal-grid td.is-out .day {
+  color: #c7cdc9;
+  font-weight: 600;
+}
+.cal-grid td.is-out .status,
+.cal-grid td.is-out .hours,
+.cal-grid td.is-out .note { display: none; }
+
+/* closed days = pink */
+.cal-grid td.is-closed {
+  background: var(--pink);
+}
+.cal-grid td.is-closed .day { color: #fff; }
+.cal-grid td.is-closed .status {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border-color: rgba(255,255,255,0.35);
+}
+.cal-grid td.is-closed .hours {
+  color: rgba(255,255,255,0.95);
+}
+.cal-grid td.is-closed .note {
+  color: rgba(255,255,255,0.92);
+  font-weight: 600;
+}
+/* override sun/sat color when closed */
+.cal-grid td.is-closed.is-sun .day,
+.cal-grid td.is-closed.is-sat .day { color: #fff; }
+
+/* today highlight = lime ring */
+.cal-grid td.is-today::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 2px solid var(--lime);
+  border-radius: 6px;
+  pointer-events: none;
+}
+.cal-grid td.is-today .day-tag {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-family: var(--font-latin);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: var(--lime);
+  color: var(--black);
+  padding: 2px 7px;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+/* footnote */
+.cal-foot {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.cal-foot .gcal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2a2a2a;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.cal-foot .gcal-link:hover {
+  border-bottom-color: var(--black);
+}
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 720px) {
+  .page { padding: 18px 14px 36px; }
+  .cal-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .cal-month-nav .month-num { font-size: 36px; }
+  .cal-grid td {
+    height: 86px;
+    padding: 5px 5px;
+  }
+  .cal-grid td .day { font-size: 13px; }
+  .cal-grid td .status {
+    margin-top: 18px;
+    padding: 1px 5px;
+    font-size: 8.5px;
+    border-radius: 999px;
+    letter-spacing: 0;
+  }
+  .cal-grid td .hours {
+    font-size: 9px;
+    margin-top: 3px;
+    letter-spacing: 0;
+  }
+  .cal-grid td .note {
+    font-size: 8.5px;
+    left: 5px; right: 5px; bottom: 4px;
+    line-height: 1.25;
+  }
+  .cal-grid thead th {
+    font-size: 9.5px;
+    padding: 7px 0;
+  }
+  .cal-grid thead th .ja { font-size: 8.5px; }
+  .cal-grid td.is-today .day-tag {
+    font-size: 7.5px;
+    padding: 1px 5px;
+    top: 3px;
+    right: 4px;
+  }
+  .cal-grid td.is-today::after { inset: 2px; border-radius: 4px; }
+  .cal-legend { gap: 12px; font-size: 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <section class="cal-section" id="calendar">
+    <div class="section-title">
+      <h2 class="section-en">CALENDAR</h2>
+      <p class="section-ja">営業日カレンダー</p>
+    </div>
+
+    <div class="cal-head">
+      <div class="cal-month-nav" aria-label="月切替">
+        <button class="cal-nav-btn" id="cal-prev" aria-label="前の月">‹</button>
+        <div class="month-block">
+          <span class="month-en" id="cal-month-en">MAY</span>
+          <span class="month-num" id="cal-month-num">5月</span>
+          <span class="year" id="cal-year">2026</span>
+        </div>
+        <button class="cal-nav-btn" id="cal-next" aria-label="次の月">›</button>
+      </div>
+
+      <div class="cal-legend" aria-label="凡例">
+        <span class="lg"><span class="swatch"></span>営業日</span>
+        <span class="lg"><span class="swatch closed"></span>休業日</span>
+        <span class="lg"><span class="swatch today"></span>本日</span>
+      </div>
+    </div>
+
+    <div class="cal-status" id="cal-loading" role="status" aria-live="polite" hidden>
+      <span class="spinner" aria-hidden="true"></span>
+      <span class="cal-status-text">Google カレンダーから休業日を読み込み中…</span>
+    </div>
+
+    <table class="cal-grid" id="cal-grid" aria-label="営業カレンダー">
+      <thead>
+        <tr>
+          <th class="dow-sun">SUN<span class="ja">日</span></th>
+          <th>MON<span class="ja">月</span></th>
+          <th>TUE<span class="ja">火</span></th>
+          <th>WED<span class="ja">水</span></th>
+          <th>THU<span class="ja">木</span></th>
+          <th>FRI<span class="ja">金</span></th>
+          <th class="dow-sat">SAT<span class="ja">土</span></th>
+        </tr>
+      </thead>
+      <tbody id="cal-body"></tbody>
+    </table>
+
+    <div class="cal-foot">
+      <span id="cal-foot-note">※ 休業日は Google カレンダーから自動取得しています。</span>
+      <a class="gcal-link" href="https://calendar.google.com/calendar/embed?src=kobe-ribbon.co.jp_bt1kbo4jj56uaa75kl0ff3dsfc%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">
+        Googleカレンダーで開く →
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.5.0/ical.min.js"></script>
+<script src="calendar.js"></script>
+
+</body>
+</html>

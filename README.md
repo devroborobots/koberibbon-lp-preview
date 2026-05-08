@@ -11,6 +11,7 @@
 | 派生案（newwebsite-alt）— ヒーロー / 下部 CTA を**フル生成画像**に差し替え後 | https://devroborobots.github.io/koberibbon-lp-preview/newwebsite-alt/ |
 | 派生案（newwebsite-alt-parts）— 同 派生案の**差し替え前**（パーツ組み合わせ版） | https://devroborobots.github.io/koberibbon-lp-preview/newwebsite-alt-parts/ |
 | iPhone モックアップ（参考） | https://devroborobots.github.io/koberibbon-lp-preview/iphone-mockup/ |
+| 営業日カレンダー（Google Calendar 連動） | https://devroborobots.github.io/koberibbon-lp-preview/calendar-2026-05-08/ |
 
 ## ステータス
 
