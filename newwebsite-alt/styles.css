@@ -494,12 +494,11 @@ h1, h2, h3, p { margin: 0; }
   z-index: 2;
 }
 
-/* ----- ACCESS MAP（コンテンツ幅に揃える） ----- */
+/* ----- ACCESS MAP（ACCESS セクション内・コンテンツ幅に揃える） ----- */
 .access-map-fullwidth {
   position: relative;
   width: 100%;
-  max-width: var(--page-w);
-  margin: 12px auto 18px;
+  margin-top: 18px;
   height: 380px;
   background: #f8f8f6;
   overflow: hidden;
@@ -1213,8 +1212,8 @@ h1, h2, h3, p { margin: 0; }
   .access-photo { width: 100%; }
   .access-photo .parking-badge { width: 64px; height: 64px; }
 
-  /* ACCESS MAP（SP では高さ低め＋画面端の余白小さめ） */
-  .access-map-fullwidth { height: 280px; margin: 8px 18px 14px; border-radius: 8px; }
+  /* ACCESS MAP（SP では高さ低め） */
+  .access-map-fullwidth { height: 280px; margin-top: 12px; border-radius: 8px; }
 
   /* CALENDAR（SP 圧縮版） */
   .calendar-section { padding-left: 18px; padding-right: 18px; }
