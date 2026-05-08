@@ -441,8 +441,8 @@ h1, h2, h3, p { margin: 0; }
 }
 .access-grid {
   display: grid;
-  grid-template-columns: 220px 250px 1fr;
-  gap: 18px;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
   align-items: start;
 }
 .access-info .section-title { margin-bottom: 6px; }
@@ -494,34 +494,34 @@ h1, h2, h3, p { margin: 0; }
   z-index: 2;
 }
 
-.access-map {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background: var(--panel);
-  border-radius: 8px;
-  overflow: hidden;
+/* ----- ACCESS MAP（画面端まで横長） ----- */
+.access-map-fullwidth {
   position: relative;
+  width: 100%;
+  height: 380px;
+  background: #f8f8f6;
+  margin: 0;
+  overflow: hidden;
 }
-.access-map img { width: 100%; height: 100%; object-fit: cover; }
-.access-map #kobe-ribbon-map {
+.access-map-fullwidth #kobe-ribbon-map {
   width: 100%;
   height: 100%;
   background: #f8f8f6;
 }
 .access-map-fallback {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 12px;
+  right: 12px;
   background: rgba(255,255,255,0.95);
   color: var(--black);
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   text-decoration: none;
   border: 1px solid var(--border);
   z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
 }
 .access-map-fallback:hover { background: var(--lime); }
 
@@ -928,6 +928,9 @@ h1, h2, h3, p { margin: 0; }
   .access-grid { grid-template-columns: 1fr; gap: 14px; }
   .access-photo { width: 100%; }
   .access-photo .parking-badge { width: 64px; height: 64px; }
+
+  /* ACCESS MAP（SP では高さ低めに） */
+  .access-map-fullwidth { height: 280px; }
 
   /* STRENGTH (vertical separator removed on SP) */
   .strength-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
