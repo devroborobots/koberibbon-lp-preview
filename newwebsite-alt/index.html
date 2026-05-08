@@ -122,6 +122,64 @@
     </div>
   </section>
 
+  <!-- =========== CALENDAR =========== -->
+  <section class="calendar-section" id="calendar">
+    <div class="section-title">
+      <h2 class="section-en">CALENDAR</h2>
+      <p class="section-ja">営業日カレンダー</p>
+    </div>
+
+    <ul class="hours-summary" aria-label="基本の営業時間">
+      <li><span class="hs-dow">月・金</span><span class="hs-time">5:15–15:00</span></li>
+      <li><span class="hs-dow">火・水・土</span><span class="hs-time">6:00–15:00</span></li>
+      <li><span class="hs-dow">日・木</span><span class="hs-time">定休日</span></li>
+    </ul>
+
+    <div class="cal-head">
+      <div class="cal-month-nav" aria-label="月切替">
+        <button class="cal-nav-btn" id="cal-prev" aria-label="前の月">‹</button>
+        <div class="month-block">
+          <span class="month-en" id="cal-month-en">MAY</span>
+          <span class="month-num" id="cal-month-num">5月</span>
+          <span class="year" id="cal-year">2026</span>
+        </div>
+        <button class="cal-nav-btn" id="cal-next" aria-label="次の月">›</button>
+      </div>
+      <div class="cal-legend" aria-label="凡例">
+        <span class="lg"><span class="swatch"></span>営業日</span>
+        <span class="lg"><span class="swatch closed"></span>休業日</span>
+        <span class="lg"><span class="swatch today"></span>本日</span>
+      </div>
+    </div>
+
+    <div class="cal-status" id="cal-loading" role="status" aria-live="polite" hidden>
+      <span class="spinner" aria-hidden="true"></span>
+      <span class="cal-status-text">Google カレンダーから休業日を読み込み中…</span>
+    </div>
+
+    <table class="cal-grid" id="cal-grid" aria-label="営業カレンダー">
+      <thead>
+        <tr>
+          <th class="dow-sun">SUN<span class="ja">日</span></th>
+          <th>MON<span class="ja">月</span></th>
+          <th>TUE<span class="ja">火</span></th>
+          <th>WED<span class="ja">水</span></th>
+          <th>THU<span class="ja">木</span></th>
+          <th>FRI<span class="ja">金</span></th>
+          <th class="dow-sat">SAT<span class="ja">土</span></th>
+        </tr>
+      </thead>
+      <tbody id="cal-body"></tbody>
+    </table>
+
+    <div class="cal-foot">
+      <span id="cal-foot-note">※ 休業日は Google カレンダーから自動取得しています。</span>
+      <a class="gcal-link" href="https://calendar.google.com/calendar/embed?src=kobe-ribbon.co.jp_bt1kbo4jj56uaa75kl0ff3dsfc%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">
+        Googleカレンダーで開く →
+      </a>
+    </div>
+  </section>
+
   <!-- =========== ACCESS =========== -->
   <section class="access-section" id="access">
     <img class="decor decor-squiggle" src="assets/vectorized-svg/decor-squiggle-arrow.svg" alt="" aria-hidden="true">
@@ -174,62 +232,6 @@
           <li>建物の2階が当店です。</li>
         </ol>
         <p class="route-note">※不明な場合はお気軽にお電話ください。</p>
-      </div>
-    </div>
-
-    <!-- ===== ACCESS 内 営業日カレンダー ===== -->
-    <div class="access-calendar" id="calendar">
-      <div class="access-calendar-head">
-        <h3 class="route-title">営業日カレンダー</h3>
-        <ul class="hours-summary" aria-label="基本の営業時間">
-          <li><span class="hs-dow">月・金</span><span class="hs-time">5:15–15:00</span></li>
-          <li><span class="hs-dow">火・水・土</span><span class="hs-time">6:00–15:00</span></li>
-          <li><span class="hs-dow">日・木</span><span class="hs-time">定休日</span></li>
-        </ul>
-      </div>
-
-      <div class="cal-head">
-        <div class="cal-month-nav" aria-label="月切替">
-          <button class="cal-nav-btn" id="cal-prev" aria-label="前の月">‹</button>
-          <div class="month-block">
-            <span class="month-en" id="cal-month-en">MAY</span>
-            <span class="month-num" id="cal-month-num">5月</span>
-            <span class="year" id="cal-year">2026</span>
-          </div>
-          <button class="cal-nav-btn" id="cal-next" aria-label="次の月">›</button>
-        </div>
-        <div class="cal-legend" aria-label="凡例">
-          <span class="lg"><span class="swatch"></span>営業日</span>
-          <span class="lg"><span class="swatch closed"></span>休業日</span>
-          <span class="lg"><span class="swatch today"></span>本日</span>
-        </div>
-      </div>
-
-      <div class="cal-status" id="cal-loading" role="status" aria-live="polite" hidden>
-        <span class="spinner" aria-hidden="true"></span>
-        <span class="cal-status-text">Google カレンダーから休業日を読み込み中…</span>
-      </div>
-
-      <table class="cal-grid" id="cal-grid" aria-label="営業カレンダー">
-        <thead>
-          <tr>
-            <th class="dow-sun">SUN<span class="ja">日</span></th>
-            <th>MON<span class="ja">月</span></th>
-            <th>TUE<span class="ja">火</span></th>
-            <th>WED<span class="ja">水</span></th>
-            <th>THU<span class="ja">木</span></th>
-            <th>FRI<span class="ja">金</span></th>
-            <th class="dow-sat">SAT<span class="ja">土</span></th>
-          </tr>
-        </thead>
-        <tbody id="cal-body"></tbody>
-      </table>
-
-      <div class="cal-foot">
-        <span id="cal-foot-note">※ 休業日は Google カレンダーから自動取得しています。</span>
-        <a class="gcal-link" href="https://calendar.google.com/calendar/embed?src=kobe-ribbon.co.jp_bt1kbo4jj56uaa75kl0ff3dsfc%40group.calendar.google.com&ctz=Asia%2FTokyo" target="_blank" rel="noopener">
-          Googleカレンダーで開く →
-        </a>
       </div>
     </div>
   </section>
