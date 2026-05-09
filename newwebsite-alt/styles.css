@@ -936,6 +936,7 @@ h1, h2, h3, p { margin: 0; }
   font-size: 12px;
   font-weight: 700;
   line-height: 1.5;
+  min-height: calc(1.5em * 2);
 }
 .strength-body {
   grid-column: 2;
